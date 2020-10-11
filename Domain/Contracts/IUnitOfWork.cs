@@ -7,13 +7,11 @@ namespace Domain.Contracts
 {
     public interface IUnitOfWork : IDisposable
     {
-        IAsesoriaRepository AsesoriaRepository { get; }
-        IAsesorRepository AsesorRepository { get; }
+       
         IEstudianteRepository EstudianteRepository { get; }
-        IMiembroComiteRepository MiembroComiteRepository { get; }
-        IObservacionRepository ObservacionRepository { get; }
-        IProyectoRepository ProyectoRepository { get; }
-        IValoracionRepository ValoracionRepository { get; }
+
+        ICommitteeMemberRepository CommitteeMemberRepository {  get; }
+ 
         int Commit();
     }
 }

@@ -22,6 +22,10 @@ namespace Infrastructure.Base
 
         }
 
+        public DbContextBase()
+        {
+        }
+
         public void SetModified(object entity)
         {
             Entry(entity).State = EntityState.Modified;
