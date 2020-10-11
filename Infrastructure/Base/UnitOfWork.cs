@@ -43,7 +43,20 @@ namespace Infrastructure.Base
             }
         }
 
-        
+        public IAsesorRepository _asesorRepository;
+
+        public IAsesorRepository AsesorRepository
+        {
+            get
+            {
+                if (_asesorRepository == null)
+                {
+                    _asesorRepository = new AsesorRepository(_dbContext);
+                }
+                return _asesorRepository;
+            }
+        }
+
 
         public int Commit()
         {

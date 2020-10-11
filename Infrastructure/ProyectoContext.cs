@@ -16,7 +16,7 @@ namespace Infrastructure
 
         public DbSet<CommitteeMember> CommitteeMembers { set; get; }
 
-       
+       public DbSet<Asesor> Asesors { get; set; }
       
         public ProyectoContext()
         {
@@ -29,11 +29,13 @@ namespace Infrastructure
         }
         
         /*
+        
          protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-FDBCSN1\SQLEXPRESS;Database=ProyectoBD;Integrated Security=True;");
-        }
-       */
+        } 
+        
+        */
         
 
     }
