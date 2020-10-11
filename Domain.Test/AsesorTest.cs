@@ -26,7 +26,7 @@ namespace Domain.Test
             asesor.Phone = "3046666264";
             asesor.Type_Asser = "METODOLOGICO";
 
-            Assert.AreEqual(asesor.Validar_Asesor(asesor), "Registrado correctamente");
+            Assert.AreEqual(asesor.Validar_Asesor(asesor), "Asesor registrado correctamente");
 
         }
 
