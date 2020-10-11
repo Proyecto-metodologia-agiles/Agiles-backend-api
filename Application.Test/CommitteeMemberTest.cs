@@ -41,12 +41,13 @@ namespace Application.Test
         [Test]
         public void CreateMember1Success()
         {
-          
-            var response = _createService.Create(new Handles.Commite.CreateCommitteeMemberRequest {
+
+            var response = _createService.Create(new Handles.Commite.CreateCommitteeMemberRequest
+            {
                 FullName = "Carlos Arturo Pérez Ponce",
                 Email = "caperez@unicesar.edu.co",
                 Phone = "3107093452",
-                Level = EnumLevelCommitteeMember.Default
+                Level = "1"
             });
             Assert.AreEqual(response.RegisterValid, EnumStatusRegisterCommitteMember.Success);
             Assert.AreEqual(response.Status, true);
@@ -69,7 +70,7 @@ namespace Application.Test
                 FullName = "Carlos Arturo Pérez Ponce",
                 //Email = "caperez@unicesar.edu.co",
                 Phone = "3107093452",
-                Level = EnumLevelCommitteeMember.Default
+                Level = "1"
             });
             Assert.AreEqual(response.RegisterValid, EnumStatusRegisterCommitteMember.SomeIsEmpty);
             Assert.AreEqual(response.Status, false);
@@ -91,7 +92,7 @@ namespace Application.Test
                 FullName = "Carlos Arturo Pérez Ponce",
                 Email = "caperez@unicesar.edu.co",
                 Phone = "3107093452",
-                Level = EnumLevelCommitteeMember.Default
+                Level = "1"
             });
             Assert.AreEqual(response.RegisterValid, EnumStatusRegisterCommitteMember.Duplicate);
             Assert.AreEqual(response.Status, false);
