@@ -6,7 +6,7 @@ using Domain.Base;
 namespace Domain.Entities
 {
 
-    public class Asesor: Entity<int>
+    public class Asesor : Entity<int>
     {
         public string Name { get; set; }
         public string Last_Name { get; set; }
@@ -17,6 +17,7 @@ namespace Domain.Entities
         public string Type_Asser { get; set; }
         public string Phone { get; set; }
         public string Direction { get; set; }
+        
         public Asesor()
         {
 

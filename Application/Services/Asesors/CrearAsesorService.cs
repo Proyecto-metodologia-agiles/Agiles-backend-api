@@ -5,7 +5,8 @@ using Domain.Contracts;
 using Domain.Entities;
 
 
-namespace Application.Services.Asesor
+
+namespace Application.Services.Asesors
 {
     public class CrearAsesorService
     {
