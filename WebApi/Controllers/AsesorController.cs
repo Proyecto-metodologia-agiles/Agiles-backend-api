@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Handles.Commite;
+using Application.Services.Asesors;
 using Application.Services.Committee;
 using Domain.Contracts;
 using Domain.Entities;
@@ -10,6 +11,7 @@ using Domain.Entities.Enums;
 using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace WebApi.Controllers
 {
@@ -28,7 +30,7 @@ namespace WebApi.Controllers
         [HttpPost]
         public ActionResult<CrearAsesorResponse> Post(CrearAsesorRequest request)
         {
-            CrearAsesorServive _service = new CrearAsesorServive(_unitOfWork);
+            CrearAsesorService _service = new CrearAsesorService(_unitOfWork);
             CrearAsesorResponse response = _service.GuardarAsesor(request);
             return Ok(response);
         }
