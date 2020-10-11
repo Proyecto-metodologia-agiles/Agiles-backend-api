@@ -9,7 +9,9 @@ namespace Domain.Contracts
     {
        
         IEstudianteRepository EstudianteRepository { get; }
-       
+
+        ICommitteeMemberRepository CommitteeMemberRepository {  get; }
+ 
         int Commit();
     }
 }

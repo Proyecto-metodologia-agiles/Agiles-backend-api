@@ -2,7 +2,7 @@
 using Domain.Repositories;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-
+using System;
 
 namespace Infrastructure.Base
 {
@@ -10,16 +10,26 @@ namespace Infrastructure.Base
     {
         private IDbContext _dbContext;
 
-       
+        private  readonly Lazy<ICommitteeMemberRepository> _committeeMemberRepository;
+
+
+
 
         public UnitOfWork(IDbContext context)
         {
             _dbContext = context;
+            //singleton using Lazy
+            _committeeMemberRepository = new Lazy<ICommitteeMemberRepository>( ()=>  new CommitteeMemberRepository(_dbContext));
+        }
+        public ICommitteeMemberRepository CommitteeMemberRepository
+        {
+            get
+            {
+                return _committeeMemberRepository.Value;
+            }
         }
 
-        public IEstudianteRepository _estudianteRepository ;
-
-       
+        public IEstudianteRepository _estudianteRepository;
 
         public IEstudianteRepository EstudianteRepository
         {
@@ -33,7 +43,7 @@ namespace Infrastructure.Base
             }
         }
 
-      
+        
 
         public int Commit()
         {
@@ -56,5 +66,6 @@ namespace Infrastructure.Base
             }
         }
 
+       
     }
 }

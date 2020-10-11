@@ -7,10 +7,26 @@ namespace Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "comittee_members",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    full_name = table.Column<string>(maxLength: 50, nullable: false),
+                    email = table.Column<string>(maxLength: 50, nullable: false),
+                    phone = table.Column<string>(maxLength: 10, nullable: false),
+                    level = table.Column<int>(maxLength: 3, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_comittee_members", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Estudiantes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NombreCompleto = table.Column<string>(nullable: true),
                     Cedula = table.Column<string>(nullable: true),
@@ -22,12 +38,15 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Estudiantes", x => x.Id);
+                    table.PrimaryKey("PK_Estudiantes", x => x.id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "comittee_members");
+
             migrationBuilder.DropTable(
                 name: "Estudiantes");
         }
