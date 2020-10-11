@@ -1,5 +1,4 @@
-﻿using Application;
-using Infrastructure;
+﻿using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
