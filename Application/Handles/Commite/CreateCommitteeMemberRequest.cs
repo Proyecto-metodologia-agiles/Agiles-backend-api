@@ -32,6 +32,6 @@ namespace Application.Handles.Commite
         [MaxLength(3)]
         [MinLength(1)]
         [Required]
-        public EnumLevelCommitteeMember Level { set; get; } = EnumLevelCommitteeMember.None;
+        public string Level { set; get; } = string.Empty;
     }
 }

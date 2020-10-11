@@ -17,21 +17,24 @@ namespace Infrastructure
         public DbSet<CommitteeMember> CommitteeMembers { set; get; }
 
        
-        public ProyectoContext(DbContextOptions options) : base(options)
-        {
-
-        }
-
+      
         public ProyectoContext()
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        
+        public ProyectoContext(DbContextOptions options) : base(options)
         {
-            optionsBuilder.UseSqlServer(@"data source=.\SQLEXPRESS;initial catalog=ProyectoBD;user id=sa;password=4015594wae");
+
         }
-       
-       
+        
+        /*
+         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-FDBCSN1\SQLEXPRESS;Database=ProyectoBD;Integrated Security=True;");
+        }
+       */
+        
 
     }
 }

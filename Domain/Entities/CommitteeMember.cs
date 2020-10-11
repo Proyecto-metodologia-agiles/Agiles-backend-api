@@ -43,7 +43,8 @@ namespace Domain.Entities
         [MaxLength(3)]
         [MinLength(1)]
         [Required]
-        public EnumLevelCommitteeMember Level { set; get; } = EnumLevelCommitteeMember.None;
+
+        public string Level { set; get; } = string.Empty;
 
 
         public EnumStatusRegisterCommitteMember IsValid()
@@ -54,7 +55,7 @@ namespace Domain.Entities
                Email.IsData() != TypeData.Email ||
                Phone == string.Empty ||
                Phone.IsData() != TypeData.Phone||
-               Level == EnumLevelCommitteeMember.None)
+               Level == string.Empty)
             {
                 return EnumStatusRegisterCommitteMember.SomeIsEmpty;
             }
@@ -66,7 +67,7 @@ namespace Domain.Entities
             return status;
         }
 
-        public static CommitteeMember Build(string fullName, string email, string phone, EnumLevelCommitteeMember level)
+        public static CommitteeMember Build(string fullName, string email, string phone, string level)
         {
             return new CommitteeMember
             {
