@@ -37,7 +37,7 @@ namespace Application.Services.Asesors
                 {
                     _unitOfWork.AsesorRepository.Add(asesorNuevo );
                     _unitOfWork.Commit();
-                    return new CrearAsesorResponse() { Mensaje = $"Se registro con exito al asesor {asesorNuevo.Name} {asesor.Last_Name}." };
+                    return new CrearAsesorResponse() { Mensaje = $"Se registro con exito al asesor {asesorNuevo.Name} {asesorNuevo.Last_Name}." };
                 }
                 else
                 {
