@@ -84,7 +84,7 @@ namespace Infrastructure.Base
         }
         public virtual void Add(T entity)
         {
-             _dbset.Add(entity);
+           _dbset.Add(entity);
         }
 
         public virtual void Delete(T entity)
@@ -104,7 +104,14 @@ namespace Infrastructure.Base
             _dbset.AddRange(entities);
         }
 
+        public bool Any(Expression<Func<T, bool>> predicate)
+        {
+            return _dbset.Any(predicate);
+        }
 
-
+        public void Delete(object id)
+        {
+            _dbset.Remove(Find(id));
+        }
     }
 }
