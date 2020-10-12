@@ -27,7 +27,7 @@ namespace WebApi.Controllers
             _unitOfWork = unitOfWork;
             _context = context;
         }
-        [HttpPost]
+        [HttpPost("[action]")]
         public ActionResult<CrearAsesorResponse> Post(CrearAsesorRequest request)
         {
             CrearAsesorService _service = new CrearAsesorService(_unitOfWork);

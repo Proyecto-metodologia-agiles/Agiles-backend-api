@@ -25,7 +25,7 @@ namespace WebApi.Controllers
             _context = context;
         }
 
-        [HttpPost]
+        [HttpPost("[action]")]
         public ActionResult<CrearEstudianteResponse> Post(CrearEstudianteRequest request)
         {
             CrearEstudianteServive _service = new CrearEstudianteServive(_unitOfWork);

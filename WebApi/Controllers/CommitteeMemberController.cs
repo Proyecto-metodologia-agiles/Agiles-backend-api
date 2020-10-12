@@ -31,7 +31,7 @@ namespace WebApi.Controllers
 
         }
 
-        [HttpPost]
+        [HttpPost("[action]")]
         public ActionResult<CreateCommitteeMemberResponse> Post(CreateCommitteeMemberRequest request)
         {
 
