@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Infrastructure
 {
-    public class ProyectoContext : DbContext
+    public class ProyectoContext : DbContextBase
     {
 
         

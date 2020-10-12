@@ -26,7 +26,7 @@ namespace Application.Handles.Commite
         [MinLength(5)]
         [Required]
         [Phone]
-        public int Phone { set; get; } = 0;
+        public string Phone { set; get; } = string.Empty;
 
         
         [MaxLength(15)]
@@ -37,6 +37,6 @@ namespace Application.Handles.Commite
         [MaxLength(15)]
         [MinLength(1)]
         [Required]
-        public int Identification { set; get; } = 0;
+        public string Identification { set; get; } = string.Empty;
     }
 }
