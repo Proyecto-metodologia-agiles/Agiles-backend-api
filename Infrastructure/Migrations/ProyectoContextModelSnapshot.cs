@@ -78,11 +78,11 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
-                    b.Property<string>("Level")
+                    b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnName("level")
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
+                        .HasColumnName("password")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
 
                     b.Property<string>("Phone")
                         .IsRequired()

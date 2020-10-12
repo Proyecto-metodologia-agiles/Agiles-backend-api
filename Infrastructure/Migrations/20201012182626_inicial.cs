@@ -2,7 +2,7 @@
 
 namespace Infrastructure.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,7 +34,7 @@ namespace Infrastructure.Migrations
                     full_name = table.Column<string>(maxLength: 50, nullable: false),
                     email = table.Column<string>(maxLength: 50, nullable: false),
                     phone = table.Column<string>(maxLength: 10, nullable: false),
-                    level = table.Column<string>(maxLength: 10, nullable: false),
+                    password = table.Column<string>(maxLength: 15, nullable: false),
                     identification = table.Column<string>(maxLength: 15, nullable: false)
                 },
                 constraints: table =>

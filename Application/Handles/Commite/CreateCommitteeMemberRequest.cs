@@ -26,17 +26,17 @@ namespace Application.Handles.Commite
         [MinLength(5)]
         [Required]
         [Phone]
-        public string Phone { set; get; } = string.Empty;
+        public int Phone { set; get; } = 0;
 
         
         [MaxLength(15)]
         [MinLength(1)]
         [Required]
-        public string Level { set; get; } = string.Empty;
+        public string Password { set; get; } = string.Empty;
 
         [MaxLength(15)]
         [MinLength(1)]
         [Required]
-        public string Identification { set; get; } = string.Empty;
+        public int Identification { set; get; } = 0;
     }
 }

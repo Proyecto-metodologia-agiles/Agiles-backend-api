@@ -39,12 +39,12 @@ namespace Domain.Entities
         [Phone]
         public string Phone { set; get; } = string.Empty;
 
-        [Column("level")]
-        [MaxLength(10)]
+        [Column("password")]
+        [MaxLength(15)]
         [MinLength(1)]
         [Required]
 
-        public string Level { set; get; } = string.Empty;
+        public string Password { set; get; } = string.Empty;
 
 
         [Column("identification")]
@@ -62,7 +62,7 @@ namespace Domain.Entities
                Email.IsData() != TypeData.Email ||
                Phone == string.Empty ||
                Phone.IsData() != TypeData.Phone ||
-               Level == string.Empty||
+               Password == string.Empty||
                Identification.IsData() != TypeData.Document)
             {
                 return EnumStatusRegisterCommitteMember.SomeIsEmpty;
@@ -75,14 +75,14 @@ namespace Domain.Entities
             return status;
         }
 
-        public static CommitteeMember Build(string fullName, string email, string phone, string level,string identification)
+        public static CommitteeMember Build(string fullName, string email, string phone, string password,string identification)
         {
             return new CommitteeMember
             {
                 Phone = phone,
                 Email = email,
                 FullName = fullName,
-                Level = level,
+                Password = password,
                 Identification = identification
                 
             };

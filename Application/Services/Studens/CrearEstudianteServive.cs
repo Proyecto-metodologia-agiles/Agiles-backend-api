@@ -17,12 +17,12 @@ namespace Application.Services
 
         public CrearEstudianteResponse GuardarEstudiante(CrearEstudianteRequest request)
         {
-            Estudiante estudiante = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Cedula);
+            Estudiante estudiante = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Cedula.ToString());
             if (estudiante == null)
             {
                 Estudiante estudianteNuevo = new Estudiante();
-                estudianteNuevo.Cedula = request.Cedula;
-                estudianteNuevo.Celular = request.Celular;
+                estudianteNuevo.Cedula = request.Cedula.ToString();
+                estudianteNuevo.Celular = request.Celular.ToString();
                 estudianteNuevo.Correo = request.Correo;
                 estudianteNuevo.Edad = request.Edad;
                 estudianteNuevo.Semestre = request.Semestre;
@@ -52,10 +52,10 @@ namespace Application.Services
     public class CrearEstudianteRequest
     {
         public string NombreCompleto { get; set; }
-        public string Cedula { get; set; }
+        public int Cedula { get; set; }
         public string Correo { get; set; }
         public string Password { get; set; }
-        public string Celular { get; set; }
+        public int Celular { get; set; }
         public int Edad { get; set; }
         public string Semestre { get; set; }
     }

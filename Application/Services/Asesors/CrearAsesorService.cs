@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text;
 using Domain.Contracts;
 using Domain.Entities;
@@ -19,7 +20,7 @@ namespace Application.Services.Asesors
 
         public CrearAsesorResponse GuardarAsesor(CrearAsesorRequest request) 
         {
-            Asesor asesor = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Identification == request.Identification);
+            Asesor asesor = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Identification == request.Identification.ToString());
 
             if (asesor == null) 
             {
@@ -29,8 +30,8 @@ namespace Application.Services.Asesors
                 asesorNuevo.Email = request.Email;
                 asesorNuevo.Direction = request.Direction;
                 asesorNuevo.Type_Asser = request.Type_Asser;
-                asesorNuevo.Phone = request.Phone;
-                asesorNuevo.Identification = request.Identification;
+                asesorNuevo.Phone =  request.Phone.ToString();
+                asesorNuevo.Identification = request.Identification.ToString();
 
                 if (asesorNuevo.Validar_Asesor(asesorNuevo) == "Asesor registrado correctamente") 
                 {
@@ -59,9 +60,9 @@ namespace Application.Services.Asesors
         public string Name_Complet { get; set; }   
         public string Password { get; set; }
         public string Email { get; set; }
-        public string Identification { get; set; }
+        public int Identification { get; set; }
         public string Type_Asser { get; set; }
-        public string Phone { get; set; }
+        public int Phone { get; set; }
         public string Direction { get; set; }
     }
     public class CrearAsesorResponse
