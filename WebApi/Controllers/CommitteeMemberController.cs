@@ -36,14 +36,13 @@ namespace WebApi.Controllers
         public ActionResult<CreateCommitteeMemberResponse> Post(CreateCommitteeMemberRequest request)
         {
 
-            using (var transaction = _context.Database.BeginTransaction())
-            {
+           
                 try
                 {
                     CreateCommitteeMemberService _service = new CreateCommitteeMemberService(_unitOfWork, _unitOfWork.CommitteeMemberRepository);
                     CreateCommitteeMemberResponse response = _service.Create(request);
 
-                    transaction.Commit(); //crea la transacion
+                  
                     if (response.RegisterValid == EnumStatusRegisterCommitteMember.Success)
                     {
                         return Ok(response);
@@ -52,7 +51,7 @@ namespace WebApi.Controllers
                 }
                 catch (Exception e)
                 {
-                    transaction.Rollback();
+                  
                     CreateCommitteeMemberResponse response = new CreateCommitteeMemberResponse
                     {
                         Message = e.Message,
@@ -61,7 +60,7 @@ namespace WebApi.Controllers
                     };
                     return BadRequest(response);
                 }
-            }
+            
 
         }
 

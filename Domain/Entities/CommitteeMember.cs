@@ -56,6 +56,8 @@ namespace Domain.Entities
 
         public EnumStatusRegisterCommitteMember IsValid()
         {
+           
+
             if (FullName == string.Empty ||
                FullName.IsData() != TypeData.Name ||
                Email == string.Empty ||
