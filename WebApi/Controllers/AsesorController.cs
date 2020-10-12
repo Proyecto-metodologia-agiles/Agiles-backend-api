@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Handles.Commite;
 using Application.Services.Asesors;
 using Application.Services.Committee;
+using Application.Services.Studens;
 using Domain.Contracts;
 using Domain.Entities;
 using Domain.Entities.Enums;
@@ -33,6 +34,15 @@ namespace WebApi.Controllers
             CrearAsesorService _service = new CrearAsesorService(_unitOfWork);
             CrearAsesorResponse response = _service.GuardarAsesor(request);
             return Ok(response);
+        }
+
+
+        [HttpGet("[action]")]
+        public IEnumerable<Asesor> Asesores()
+        {
+            ConsultAsesorService servicio = new ConsultAsesorService(_unitOfWork);
+            List<Asesor> Lista = servicio.GetAll();
+            return Lista;
         }
     }
 }

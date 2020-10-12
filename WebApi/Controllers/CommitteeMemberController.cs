@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Handles.Commite;
 using Application.Services.Committee;
+using Application.Services.Studens;
 using Domain.Contracts;
 using Domain.Entities;
 using Domain.Entities.Enums;
@@ -62,6 +63,14 @@ namespace WebApi.Controllers
                 }
             }
 
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<CommitteeMember> MiembrosComite()
+        {
+            ConsultMemberService servicio  = new ConsultMemberService(_unitOfWork);
+            List<CommitteeMember> Lista = servicio.GetAll();
+            return Lista;
         }
 
     }

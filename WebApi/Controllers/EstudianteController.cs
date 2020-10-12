@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application;
 using Application.Services;
+using Application.Services.Studens;
 using Domain.Contracts;
+using Domain.Entities;
 using Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -33,5 +35,13 @@ namespace WebApi.Controllers
             return Ok(response);
         }
 
+        [HttpGet("[action]")]
+        public IEnumerable<Estudiante> Estudiantes()
+        {
+            consultStudentService servicio = new consultStudentService(_unitOfWork);
+            List<Estudiante> Lista = servicio.GetAll();
+            return Lista;
+
+        }
     }
 }
