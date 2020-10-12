@@ -40,22 +40,30 @@ namespace Domain.Entities
         public string Phone { set; get; } = string.Empty;
 
         [Column("level")]
-        [MaxLength(3)]
+        [MaxLength(10)]
         [MinLength(1)]
         [Required]
 
         public string Level { set; get; } = string.Empty;
 
 
+        [Column("identification")]
+        [MaxLength(15)]
+        [MinLength(1)]
+        [Required]
+
+        public string Identification { set; get; } = string.Empty;
+
         public EnumStatusRegisterCommitteMember IsValid()
         {
-            if(FullName == string.Empty ||
+            if (FullName == string.Empty ||
                FullName.IsData() != TypeData.Name ||
                Email == string.Empty ||
                Email.IsData() != TypeData.Email ||
                Phone == string.Empty ||
-               Phone.IsData() != TypeData.Phone||
-               Level == string.Empty)
+               Phone.IsData() != TypeData.Phone ||
+               Level == string.Empty||
+               Identification.IsData() != TypeData.Document)
             {
                 return EnumStatusRegisterCommitteMember.SomeIsEmpty;
             }
@@ -67,14 +75,16 @@ namespace Domain.Entities
             return status;
         }
 
-        public static CommitteeMember Build(string fullName, string email, string phone, string level)
+        public static CommitteeMember Build(string fullName, string email, string phone, string level,string identification)
         {
             return new CommitteeMember
             {
                 Phone = phone,
                 Email = email,
                 FullName = fullName,
-                Level = level
+                Level = level,
+                Identification = identification
+                
             };
         }
 

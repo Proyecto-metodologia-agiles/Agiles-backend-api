@@ -25,7 +25,7 @@ namespace Application.Services
                 estudianteNuevo.Celular = request.Celular;
                 estudianteNuevo.Correo = request.Correo;
                 estudianteNuevo.Edad = request.Edad;
-                estudianteNuevo.Estado = request.Estado;
+                estudianteNuevo.Semestre = request.Semestre;
                 estudianteNuevo.NombreCompleto = request.NombreCompleto;
                 estudianteNuevo.Password = request.Password;
 
@@ -57,7 +57,7 @@ namespace Application.Services
         public string Password { get; set; }
         public string Celular { get; set; }
         public int Edad { get; set; }
-        public string Estado { get; set; }
+        public string Semestre { get; set; }
     }
     public class CrearEstudianteResponse
     {

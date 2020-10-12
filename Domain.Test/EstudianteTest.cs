@@ -21,7 +21,7 @@ namespace Domain.Test
             estudiante.Edad = 21;
             estudiante.NombreCompleto = "fabian quintero";
             estudiante.Password = "jdhsfhbsdbhf3534";
-            estudiante.Estado = "Prueba";
+            estudiante.Semestre = "Prueba";
             Assert.AreEqual(estudiante.ValidarEstudiante(estudiante), "Registrado correctamente");
         }
 
@@ -34,7 +34,7 @@ namespace Domain.Test
             estudiante.Edad = 21;
             estudiante.NombreCompleto = "fabian quintero";
             estudiante.Password = "jdhsfhbsdbhf3534";
-            estudiante.Estado = "Prueba";
+            estudiante.Semestre = "Prueba";
             Assert.AreEqual(estudiante.ValidarEstudiante(estudiante), "Digite los campos primordiales para su registro");
         }
 

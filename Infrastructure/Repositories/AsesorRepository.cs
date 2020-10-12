@@ -4,7 +4,7 @@ using System.Text;
 using Domain.Entities;
 using Domain.Repositories;
 using Infrastructure.Base;
-using System.Collections.Generic;
+
 
 namespace Infrastructure.Repositories
 {

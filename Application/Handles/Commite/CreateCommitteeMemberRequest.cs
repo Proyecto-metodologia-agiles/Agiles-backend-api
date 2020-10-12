@@ -29,9 +29,14 @@ namespace Application.Handles.Commite
         public string Phone { set; get; } = string.Empty;
 
         
-        [MaxLength(3)]
+        [MaxLength(15)]
         [MinLength(1)]
         [Required]
         public string Level { set; get; } = string.Empty;
+
+        [MaxLength(15)]
+        [MinLength(1)]
+        [Required]
+        public string Identification { set; get; } = string.Empty;
     }
 }

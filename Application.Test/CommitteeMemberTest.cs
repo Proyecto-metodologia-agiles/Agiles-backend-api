@@ -16,7 +16,7 @@ namespace Application.Test
     {
 
 
-        private CommitteeMember _committee;
+        
         private CreateCommitteeMemberService _createService;
         private ProyectoContext _proyectoContext;
         private IUnitOfWork _unitOfWork;

@@ -24,8 +24,7 @@ namespace Application.Services.Asesors
             if (asesor == null) 
             {
                 Asesor asesorNuevo = new Asesor();
-                asesorNuevo.Name = request.Name;
-                asesorNuevo.Last_Name = request.Last_Name;
+                asesorNuevo.Name_Complet = request.Name_Complet;
                 asesorNuevo.Password = request.Password;
                 asesorNuevo.Email = request.Email;
                 asesorNuevo.Direction = request.Direction;
@@ -37,7 +36,7 @@ namespace Application.Services.Asesors
                 {
                     _unitOfWork.AsesorRepository.Add(asesorNuevo );
                     _unitOfWork.Commit();
-                    return new CrearAsesorResponse() { Mensaje = $"Se registro con exito al asesor {asesorNuevo.Name} {asesorNuevo.Last_Name}." };
+                    return new CrearAsesorResponse() { Mensaje = $"Se registro con exito al asesor {asesorNuevo.Name_Complet}." };
                 }
                 else
                 {
@@ -57,10 +56,8 @@ namespace Application.Services.Asesors
 
     public class CrearAsesorRequest
     {
-        public string Name { get; set; }
-        public string Last_Name { get; set; }
+        public string Name_Complet { get; set; }   
         public string Password { get; set; }
-
         public string Email { get; set; }
         public string Identification { get; set; }
         public string Type_Asser { get; set; }

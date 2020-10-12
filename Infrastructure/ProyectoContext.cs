@@ -28,8 +28,8 @@ namespace Infrastructure
 
         }
         
-        /*
         
+        /*
          protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-FDBCSN1\SQLEXPRESS;Database=ProyectoBD;Integrated Security=True;");

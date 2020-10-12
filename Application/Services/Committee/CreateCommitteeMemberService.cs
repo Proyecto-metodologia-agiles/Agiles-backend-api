@@ -27,7 +27,7 @@ namespace Application.Services.Committee
         public CreateCommitteeMemberResponse Create(CreateCommitteeMemberRequest request)
         {
 
-            CommitteeMember committee = CommitteeMember.Build(request.FullName, request.Email, request.Phone, request.Level);
+            CommitteeMember committee = CommitteeMember.Build(request.FullName, request.Email, request.Phone, request.Level,request.Identification);
 
 
 

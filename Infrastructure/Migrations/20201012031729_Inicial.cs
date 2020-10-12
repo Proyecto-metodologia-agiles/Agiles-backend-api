@@ -12,8 +12,7 @@ namespace Infrastructure.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Last_Name = table.Column<string>(nullable: true),
+                    Name_Complet = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Identification = table.Column<string>(nullable: true),
@@ -35,7 +34,8 @@ namespace Infrastructure.Migrations
                     full_name = table.Column<string>(maxLength: 50, nullable: false),
                     email = table.Column<string>(maxLength: 50, nullable: false),
                     phone = table.Column<string>(maxLength: 10, nullable: false),
-                    level = table.Column<string>(maxLength: 3, nullable: false)
+                    level = table.Column<string>(maxLength: 10, nullable: false),
+                    identification = table.Column<string>(maxLength: 15, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,7 +54,7 @@ namespace Infrastructure.Migrations
                     Password = table.Column<string>(nullable: true),
                     Celular = table.Column<string>(nullable: true),
                     Edad = table.Column<int>(nullable: false),
-                    Estado = table.Column<string>(nullable: true)
+                    Semestre = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

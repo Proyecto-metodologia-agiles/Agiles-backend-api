@@ -17,8 +17,7 @@ namespace Domain.Test
         public void RegistroAsesorCorrecto() 
         {
             var asesor = new Asesor();
-            asesor.Name = "Kevin";
-            asesor.Last_Name = "Acosta";
+            asesor.Name_Complet = "Kevin Acosta";
             asesor.Password = "kevinjal15";
             asesor.Email = "kevin.20099@gotmail.com";
             asesor.Identification = "1010133966";
@@ -34,8 +33,7 @@ namespace Domain.Test
         public void RegistroAsesorIncorrecto() 
         {
             var asesor = new Asesor();
-            asesor.Name = "Alex";
-            asesor.Last_Name = "Acosta";
+            asesor.Name_Complet = "Alex Acosta";
             asesor.Password = "123456";
             asesor.Email = "alexacosta@gmail.com";
             asesor.Direction = "KRA 31 CLL 12";

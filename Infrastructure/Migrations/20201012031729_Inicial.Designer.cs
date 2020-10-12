@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ProyectoContext))]
-    [Migration("20201011165241_Inicial")]
+    [Migration("20201012031729_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,10 +37,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Identification")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Last_Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("Name_Complet")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
@@ -77,11 +74,17 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<string>("Identification")
+                        .IsRequired()
+                        .HasColumnName("identification")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
+
                     b.Property<string>("Level")
                         .IsRequired()
                         .HasColumnName("level")
-                        .HasColumnType("nvarchar(3)")
-                        .HasMaxLength(3);
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -114,13 +117,13 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Edad")
                         .HasColumnType("int");
 
-                    b.Property<string>("Estado")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NombreCompleto")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Semestre")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
