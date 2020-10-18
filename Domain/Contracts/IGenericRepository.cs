@@ -13,6 +13,10 @@ namespace Domain.Contracts
         T Find(object id);
         void Add(T entity);
         void Delete(T entity);
+
+
+        void Delete(object id);
+
         void Edit(T entity);
 
         void AddRange(List<T> entities);
@@ -30,5 +34,7 @@ namespace Domain.Contracts
             IOrderedQueryable<T>> orderBy = null,
             string includeProperties = ""
          );
+
+        public bool Any(Expression<Func<T, bool>> predicate);
     }
 }
