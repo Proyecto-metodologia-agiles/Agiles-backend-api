@@ -8,31 +8,37 @@ namespace Domain.Entities
 
     public class Proyecto: Entity<int>
     {
-		public string Nombre;
-		public string Url_Archivo;
-		public string Enfoque;
-		public int Corte;
-		public string Linea;
-		public DateTime Fecha;
-		public Asesor Asesor_tematico;
-		public Asesor Asesor_metodologico;
+		public string Title { get; set; }
+		public string Url_Archive { get; set; }
+		public string Focus { get; set; }
+		public int Cut { get; set; }
+		public string Line { get; set; }
+		public DateTime Date { get; set; }
+		public Asesor Thematic_Advisor { get; set; }
+		public Asesor Metodologic_Advisor { get; set; }
 
-		public Proyecto(string Nombre, string Url_Archivo, string Enfoque, int Corte, string Linea, DateTime Fecha, Asesor Asesor_tematico, Asesor Asesor_metodologico)
+		public Proyecto()
+        {
+
+        }
+
+
+		public Proyecto(string title, string url, string focus, int cut, string line, DateTime date, Asesor Thematic_Advisor, Asesor metodologic_advisor)
 		{
-			this.Nombre = Nombre;
-			this.Url_Archivo = Url_Archivo;
-			this.Enfoque = Enfoque;
-			this.Corte = Corte;
-			this.Linea = Linea;
-			this.Fecha = Fecha;
-			this.Asesor_tematico = Asesor_tematico;
-			this.Asesor_metodologico = Asesor_metodologico;
+			this.Title = title;
+			this.Url_Archive = url;
+			this.Focus = focus;
+			this.Cut = cut;
+			this.Line = line;
+			this.Date = date;
+			this.Thematic_Advisor = Thematic_Advisor;
+			this.Metodologic_Advisor = metodologic_advisor;
 			
 		}
 
-		public string Validar_proyecto(Proyecto proyecto)
+		public string Build_proyecto(Proyecto proyecto)
 		{
-			if (proyecto.Nombre == null || proyecto.Url_Archivo == null || proyecto.Enfoque == null || proyecto.Corte == null || proyecto.Linea == null || proyecto.Fecha == null || proyecto.Asesor_metodologico == null || proyecto.Asesor_tematico ==null)
+			if (proyecto.Title == null || proyecto.Url_Archive == null || proyecto.Focus == null || proyecto.Cut == null || proyecto.Line == null || proyecto.Date == null || proyecto.Thematic_Advisor == null || proyecto.Metodologic_Advisor ==null)
 			{
 				return "Digite los campos primordiales para el registro";
 			}

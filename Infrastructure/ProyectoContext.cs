@@ -25,6 +25,7 @@ namespace Infrastructure
         }
 
         
+        
         public ProyectoContext(DbContextOptions options) : base(options)
         {
 

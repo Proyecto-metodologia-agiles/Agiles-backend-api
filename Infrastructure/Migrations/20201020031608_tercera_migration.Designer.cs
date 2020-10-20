@@ -4,14 +4,16 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ProyectoContext))]
-    partial class ProyectoContextModelSnapshot : ModelSnapshot
+    [Migration("20201020031608_tercera_migration")]
+    partial class tercera_migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -138,48 +140,48 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Cut")
+                    b.Property<int?>("Asesor_metodologicoId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<int?>("Asesor_tematicoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Corte")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Enfoque")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Focus")
+                    b.Property<string>("Linea")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Line")
+                    b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Metodologic_AdvisorId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Thematic_AdvisorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Url_Archive")
+                    b.Property<string>("Url_Archivo")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Metodologic_AdvisorId");
+                    b.HasIndex("Asesor_metodologicoId");
 
-                    b.HasIndex("Thematic_AdvisorId");
+                    b.HasIndex("Asesor_tematicoId");
 
                     b.ToTable("Proyectos");
                 });
 
             modelBuilder.Entity("Domain.Entities.Proyecto", b =>
                 {
-                    b.HasOne("Domain.Entities.Asesor", "Metodologic_Advisor")
+                    b.HasOne("Domain.Entities.Asesor", "Asesor_metodologico")
                         .WithMany()
-                        .HasForeignKey("Metodologic_AdvisorId");
+                        .HasForeignKey("Asesor_metodologicoId");
 
-                    b.HasOne("Domain.Entities.Asesor", "Thematic_Advisor")
+                    b.HasOne("Domain.Entities.Asesor", "Asesor_tematico")
                         .WithMany()
-                        .HasForeignKey("Thematic_AdvisorId");
+                        .HasForeignKey("Asesor_tematicoId");
                 });
 #pragma warning restore 612, 618
         }
