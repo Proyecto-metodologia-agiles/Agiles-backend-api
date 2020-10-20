@@ -8,8 +8,8 @@ namespace Domain.Entities
     public class Advisory : Entity<int>
     {
         public Proyecto Proyect { get; set; }
-        public Asesor Thematic_Advisor { get; set; }
-        public Asesor Metodologic_Advisor { get; set; }
+        public Asesor ThematicAdvisor { get; set; }
+        public Asesor MetodologicAdvisor { get; set; }
         public int AssignedHours { get; set; }
         public String semester { get; set; }
         public String Year { get; set; }
@@ -21,7 +21,7 @@ namespace Domain.Entities
 
         public int Build_advisory(Advisory advisory)
         {
-            if (advisory.Proyect==null || advisory.semester==null || advisory.Thematic_Advisor==null || advisory.Year==null || advisory.Metodologic_Advisor==null || advisory.AssignedHours==0)
+            if (advisory.Proyect==null || advisory.semester==null || advisory.ThematicAdvisor==null || advisory.Year==null || advisory.MetodologicAdvisor==null || advisory.AssignedHours==0)
             {
                 return 0;
             }
