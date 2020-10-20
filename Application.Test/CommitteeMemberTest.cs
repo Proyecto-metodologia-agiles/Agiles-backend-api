@@ -25,10 +25,13 @@ namespace Application.Test
        [SetUp]
        public void SetUp()
         {
+            /*
             _proyectoContext = new ProyectoContext();
             _unitOfWork = new UnitOfWork(_proyectoContext);
             _createService = new CreateCommitteeMemberService(_unitOfWork, _unitOfWork.CommitteeMemberRepository);
-        }
+        
+            */
+            }
 
 
         /*
@@ -44,10 +47,12 @@ namespace Application.Test
 
             var response = _createService.Create(new Handles.Commite.CreateCommitteeMemberRequest
             {
+                /*
                 FullName = "Carlos Arturo Pérez Ponce",
                 Email = "caperez@unicesar.edu.co",
                 Phone = "3107093452",
                 Level = "1"
+                */
             });
             Assert.AreEqual(response.RegisterValid, EnumStatusRegisterCommitteMember.Success);
             Assert.AreEqual(response.Status, true);
@@ -67,10 +72,11 @@ namespace Application.Test
         {
             var response = _createService.Create(new Handles.Commite.CreateCommitteeMemberRequest
             {
+                /*
                 FullName = "Carlos Arturo Pérez Ponce",
                 //Email = "caperez@unicesar.edu.co",
                 Phone = "3107093452",
-                Level = "1"
+                Level = "1" */
             });
             Assert.AreEqual(response.RegisterValid, EnumStatusRegisterCommitteMember.SomeIsEmpty);
             Assert.AreEqual(response.Status, false);
@@ -88,11 +94,12 @@ namespace Application.Test
         public void CreateMember3Duplicate()
         {
             var response = _createService.Create(new Handles.Commite.CreateCommitteeMemberRequest
-            {
+            { /*
                 FullName = "Carlos Arturo Pérez Ponce",
                 Email = "caperez@unicesar.edu.co",
                 Phone = "3107093452",
                 Level = "1"
+                */
             });
             Assert.AreEqual(response.RegisterValid, EnumStatusRegisterCommitteMember.Duplicate);
             Assert.AreEqual(response.Status, false);
