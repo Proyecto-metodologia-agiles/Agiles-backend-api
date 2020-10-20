@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Infrastructure
 {
-    public class ProyectoContext : DbContext
+    public class ProyectoContext : DbContextBase
     {
 
         
@@ -26,21 +26,21 @@ namespace Infrastructure
         {
         }
 
-        /*
+        
         
         public ProyectoContext(DbContextOptions options) : base(options)
         {
 
         }
-        */
         
         
+        /*
          protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-FDBCSN1\SQLEXPRESS;Database=ProyectoBD;Integrated Security=True;");
         } 
         
-        
+        */
         
 
     }
