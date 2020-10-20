@@ -71,6 +71,20 @@ namespace Infrastructure.Base
             }
         }
 
+        public IAdvisoryRepository _advisoryRepository;
+
+        public IAdvisoryRepository advisoryRepository 
+        {
+            get
+            {
+                if (_advisoryRepository == null)
+                {
+                    _advisoryRepository = new AdvisoryRepository(_dbContext);
+                }
+                return _advisoryRepository;
+            }
+        }
+
 
         public int Commit()
         {
