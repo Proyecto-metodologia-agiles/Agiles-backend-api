@@ -17,6 +17,8 @@ namespace Infrastructure
         public DbSet<CommitteeMember> CommitteeMembers { set; get; }
 
        public DbSet<Asesor> Asesors { get; set; }
+
+        public DbSet<Proyecto> Proyectos { get; set; }
       
         public ProyectoContext()
         {

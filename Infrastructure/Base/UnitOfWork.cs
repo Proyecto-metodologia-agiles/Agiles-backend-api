@@ -57,6 +57,20 @@ namespace Infrastructure.Base
             }
         }
 
+        public IProyectoRepository _proyectoRepository;
+
+        public IProyectoRepository ProyectoRepository 
+        {
+            get 
+            {
+                if (_proyectoRepository == null) 
+                {
+                    _proyectoRepository = new ProyectoRepository(_dbContext);
+                }
+                return _proyectoRepository;
+            }
+        }
+
 
         public int Commit()
         {
