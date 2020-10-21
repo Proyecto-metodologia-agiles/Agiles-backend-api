@@ -14,6 +14,8 @@ namespace Domain.Contracts
 
         IAsesorRepository AsesorRepository { get; }
 
+        IProyectoRepository ProyectoRepository { get; }
+
         int Commit();
     }
 }
