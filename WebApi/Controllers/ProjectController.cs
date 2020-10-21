@@ -32,5 +32,14 @@ namespace WebApi.Controllers
             CrearProyectoResponse response = _service.GuardarProyecto(request);
             return Ok(response);
         }
+
+        [HttpGet("[action]")]
+        public IEnumerable<Proyecto> Proyectos()
+        {
+            ConsulProjectService servicio = new ConsulProjectService(_unitOfWork);
+            List<Proyecto> Lista = servicio.GetAll();
+            return Lista;
+
+        }
     }
 }
