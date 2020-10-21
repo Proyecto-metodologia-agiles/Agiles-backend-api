@@ -16,6 +16,9 @@ namespace Domain.Entities
 		public DateTime Date { get; set; }
 		public Asesor Thematic_Advisor { get; set; }
 		public Asesor Metodologic_Advisor { get; set; }
+		public Estudiante Student_1 { get; set; }
+		public Estudiante Student_2 { get; set; }
+
 
 		public Proyecto()
         {
@@ -38,7 +41,7 @@ namespace Domain.Entities
 
 		public string Build_proyecto(Proyecto proyecto)
 		{
-			if (proyecto.Title == null || proyecto.Url_Archive == null || proyecto.Focus == null || proyecto.Cut == null || proyecto.Line == null || proyecto.Date == null || proyecto.Thematic_Advisor == null || proyecto.Metodologic_Advisor ==null)
+			if (proyecto.Title == null || proyecto.Url_Archive == null || proyecto.Focus == null || proyecto.Cut == null || proyecto.Line == null || proyecto.Date == null || proyecto.Thematic_Advisor == null || proyecto.Metodologic_Advisor == null || proyecto.Student_1==null)
 			{
 				return "Digite los campos primordiales para el registro";
 			}

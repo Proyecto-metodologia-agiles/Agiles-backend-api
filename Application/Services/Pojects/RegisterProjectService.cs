@@ -38,7 +38,10 @@ namespace Application.Services.Pojects
                 //busco el asesor tematico
                 Asesor asesormetemaico = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Id == request.Metodologic_Advisor);
                 proyectoNuevo.Thematic_Advisor = asesormetemaico;
-               
+                //busco estudiante1 
+                Estudiante estudiante1 = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Student_1);
+                //busco estudiante1 
+                Estudiante estudiante2 = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Student_2);
 
                 if (proyectoNuevo.Build_proyecto(proyectoNuevo) == "Proyecto registrado correctamente")
                 {
@@ -75,6 +78,8 @@ namespace Application.Services.Pojects
         public string Line { get; set; }
         public int Thematic_Advisor { get; set; }
         public int Metodologic_Advisor { get; set; }
+        public string Student_1 { get; set; }
+        public string Student_2 { get; set; }
     }
     public class CrearProyectoResponse
     {

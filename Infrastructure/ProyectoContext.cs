@@ -39,8 +39,8 @@ namespace Infrastructure
         {
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-FDBCSN1\SQLEXPRESS;Database=ProyectoBD;Integrated Security=True;");
         } 
-        
         */
+        
         
 
     }
