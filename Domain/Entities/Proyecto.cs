@@ -22,7 +22,7 @@ namespace Domain.Entities
 
 		public Proyecto()
         {
-
+			this.Cut = 0;
         }
 
 
@@ -41,7 +41,7 @@ namespace Domain.Entities
 
 		public string Build_proyecto(Proyecto proyecto)
 		{
-			if (proyecto.Title == null || proyecto.Url_Archive == null || proyecto.Focus == null || proyecto.Cut == null || proyecto.Line == null || proyecto.Date == null || proyecto.Thematic_Advisor == null || proyecto.Metodologic_Advisor == null || proyecto.Student_1==null)
+			if (proyecto.Title == null || proyecto.Url_Archive == null || proyecto.Focus == null || proyecto.Cut == 0 || proyecto.Line == null || proyecto.Date == null || proyecto.Thematic_Advisor == null || proyecto.Metodologic_Advisor == null || proyecto.Student_1==null)
 			{
 				return "Digite los campos primordiales para el registro";
 			}

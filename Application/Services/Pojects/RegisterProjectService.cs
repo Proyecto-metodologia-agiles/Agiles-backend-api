@@ -30,7 +30,7 @@ namespace Application.Services.Pojects
                 proyectoNuevo.Url_Archive = filepatch;
                 proyectoNuevo.Focus = request.Focus;
                 proyectoNuevo.Cut = request.Cut;
-                proyectoNuevo.Date = new DateTime();
+                proyectoNuevo.Date = DateTime.Today;
                 proyectoNuevo.Line = request.Line;
                 //busco el asesor metodologico
                 Asesor asesormetodologico = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Id == request.Metodologic_Advisor);
