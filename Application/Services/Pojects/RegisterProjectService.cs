@@ -43,6 +43,10 @@ namespace Application.Services.Pojects
                 //busco estudiante1 
                 Estudiante estudiante2 = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Student_2);
 
+                proyectoNuevo.Student_1 = estudiante1;
+                proyectoNuevo.Student_2 = estudiante2;
+
+
                 if (proyectoNuevo.Build_proyecto(proyectoNuevo) == "Proyecto registrado correctamente")
                 {
                     _unitOfWork.ProyectoRepository.Add(proyectoNuevo);
