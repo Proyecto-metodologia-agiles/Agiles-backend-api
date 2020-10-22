@@ -29,7 +29,7 @@ namespace Aplication.Test
             var response = service.GuardarEstudiante(request);
             Assert.AreEqual(response.Mensaje, expected);
         }
-
+        /*
         private static IEnumerable Creations()
         {
             yield return new TestCaseData(
@@ -73,5 +73,6 @@ namespace Aplication.Test
              "Digite los campos primordiales para su registro"
          ).SetName("CreateFailFaltaId");
         }
+        */
     }
 }

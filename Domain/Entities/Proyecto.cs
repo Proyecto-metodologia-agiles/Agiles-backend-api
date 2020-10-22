@@ -39,7 +39,7 @@ namespace Domain.Entities
 			
 		}
 
-		public string Build_proyecto(Proyecto proyecto)
+		public string Verify_proyecto(Proyecto proyecto)
 		{
 			if (proyecto.Title == null || proyecto.Url_Archive == null || proyecto.Focus == null || proyecto.Cut == 0 || proyecto.Line == null || proyecto.Date == null || proyecto.Thematic_Advisor == null || proyecto.Metodologic_Advisor == null || proyecto.Student_1==null)
 			{

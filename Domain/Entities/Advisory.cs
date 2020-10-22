@@ -19,7 +19,7 @@ namespace Domain.Entities
             this.AssignedHours = 0;
         }
 
-        public int Build_advisory(Advisory advisory)
+        public int Verify_advisory(Advisory advisory)
         {
             if (advisory.Proyect==null || advisory.semester==null || advisory.ThematicAdvisor==null || advisory.Year==null || advisory.MetodologicAdvisor==null || advisory.AssignedHours==0)
             {

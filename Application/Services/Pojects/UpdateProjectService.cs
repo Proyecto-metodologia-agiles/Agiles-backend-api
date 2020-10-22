@@ -38,23 +38,33 @@ namespace Application.Services.Pojects
                 string filepatch = Path.Combine(path, nameFile);
                 proyectoNuevo.Url_Archive = nameFile;
                 Proyecto proyecto = _unitOfWork.ProyectoRepository.Find(proyectoNuevo.Id);
-                proyecto.Url_Archive = proyectoNuevo.Url_Archive;
-                if (_unitOfWork.Commit() > 0)
-                {
-                    using (var stream = File.Create(filepatch))
-                    {
-                        request.Archive.CopyTo(stream);
-                        response.Proyecto = proyecto;
-                        response.Status = true;
-                        response.Message = $"Se registro con exito al proyecto: {proyectoNuevo.Title}.";
-                        return response;
-                    }
-                }
 
-                response.Proyecto = proyecto;
-                response.Status = true;
-                response.Message = $"Se actulizo con exito al proyecto: {proyectoNuevo.Title}.";
-                return response;
+                if (proyecto!=null) { 
+                    proyecto.Url_Archive = proyectoNuevo.Url_Archive;
+                    if (_unitOfWork.Commit() > 0)
+                    {
+                        using (var stream = File.Create(filepatch))
+                        {
+                            request.Archive.CopyTo(stream);
+                            response.Proyecto = proyecto;
+                            response.Status = true;
+                            response.Message = $"Se registro con exito al proyecto: {proyectoNuevo.Title}.";
+                            return response;
+                        }
+                    }
+
+                    response.Proyecto = proyecto;
+                    response.Status = true;
+                    response.Message = $"Se actulizo con exito al proyecto: {proyectoNuevo.Title}.";
+                    return response;
+                }
+                else { 
+                    response.Proyecto = null;
+                    response.Status = true;
+                    response.Message = "No existe ningun proyecto con esa ID";
+                    return response;
+                }
+               
             }catch(Exception e)
             {
                 response.Proyecto = null;

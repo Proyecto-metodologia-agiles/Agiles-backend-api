@@ -39,7 +39,7 @@ namespace Application.Services.Advisorys
                 AsesoriaNueva.ThematicAdvisor = asesormetemaico;
                 AsesoriaNueva.Year = request.Year;
 
-                if ( AsesoriaNueva.Build_advisory(AsesoriaNueva) == 1)
+                if ( AsesoriaNueva.Verify_advisory(AsesoriaNueva) == 1)
                 {
                     _unitOfWork.AdvisoryRepository.Add(AsesoriaNueva);
                     _unitOfWork.Commit();

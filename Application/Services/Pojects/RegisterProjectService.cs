@@ -56,7 +56,7 @@ namespace Application.Services.Pojects
                 proyectoNuevo.Student_2 = estudiante2;
 
 
-                if (proyectoNuevo.Build_proyecto(proyectoNuevo) == "Proyecto registrado correctamente")
+                if (proyectoNuevo.Verify_proyecto(proyectoNuevo) == "Proyecto registrado correctamente")
                 {
                     _unitOfWork.ProyectoRepository.Add(proyectoNuevo);
                     _unitOfWork.Commit();
