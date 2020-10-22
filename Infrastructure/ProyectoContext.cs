@@ -34,12 +34,11 @@ namespace Infrastructure
         }
         
         
-        /*
+        
          protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-FDBCSN1\SQLEXPRESS;Database=ProyectoBD;Integrated Security=True;");
-        } 
-        */
+         {    
+            optionsBuilder.UseSqlServer(@"data source=.\SQLEXPRESS;initial catalog=ProyectoBD;user id=sa;password=4015594wae");
+         } 
         
         
 

@@ -2,6 +2,7 @@
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Application.Services
@@ -21,8 +22,8 @@ namespace Application.Services
             if (estudiante == null)
             {
                 Estudiante estudianteNuevo = new Estudiante();
-                estudianteNuevo.Cedula = request.Cedula.ToString();
-                estudianteNuevo.Celular = request.Celular.ToString();
+                estudianteNuevo.Cedula = request.Cedula;
+                estudianteNuevo.Celular = request.Celular;
                 estudianteNuevo.Correo = request.Correo;
                 estudianteNuevo.Edad = request.Edad;
                 estudianteNuevo.Semestre = request.Semestre;
@@ -52,10 +53,14 @@ namespace Application.Services
     public class CrearEstudianteRequest
     {
         public string NombreCompleto { get; set; }
-        public int Cedula { get; set; }
+        [MaxLength(10)]
+        [RegularExpression("([0-9]+)")]
+        public string Cedula { get; set; }
         public string Correo { get; set; }
         public string Password { get; set; }
-        public int Celular { get; set; }
+        [MaxLength(10)]
+        [RegularExpression("([0-9]+)")]
+        public string Celular { get; set; }
         public int Edad { get; set; }
         public string Semestre { get; set; }
     }

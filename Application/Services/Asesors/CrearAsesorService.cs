@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Numerics;
 using System.Text;
 using Domain.Contracts;
@@ -60,9 +61,14 @@ namespace Application.Services.Asesors
         public string Name_Complet { get; set; }   
         public string Password { get; set; }
         public string Email { get; set; }
-        public int Identification { get; set; }
+        [MaxLength(10)]
+        [RegularExpression("([0-9]+)")]
+        public string Identification { get; set; }
         public string Type_Asser { get; set; }
-        public int Phone { get; set; }
+        
+        [MaxLength(10)]
+        [RegularExpression("([0-9]+)")]
+        public string Phone { get; set; }
         public string Direction { get; set; }
     }
     public class CrearAsesorResponse

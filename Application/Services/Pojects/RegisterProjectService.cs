@@ -3,6 +3,7 @@ using Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 
@@ -17,7 +18,7 @@ namespace Application.Services.Pojects
             _unitOfWork = unitOfWork;
         }
 
-        public CrearProyectoResponse GuardarProyecto(CrearProyectoRequest request)
+        public CrearProyectoResponse GuardarProyecto(CrearProyectoRequest request, string path)
         {
             Proyecto proyecto = _unitOfWork.ProyectoRepository.FindFirstOrDefault(t => t.Title == request.Title.ToString());
             if (proyecto == null)
@@ -26,8 +27,16 @@ namespace Application.Services.Pojects
                 Proyecto proyectoNuevo = new Proyecto();
                 proyectoNuevo.Title = request.Title;
 
-                var filepatch = "C:\\DDDCore3\\Agiles-backend-api\\WebApi\\Archivos\\" + request.Archive.FileName;
-                proyectoNuevo.Url_Archive = filepatch;
+                FileInfo fi = new FileInfo(request.Archive.FileName);
+
+
+
+                string nameFile = "Archivos/"+DateTime.Now.Ticks.ToString() + fi.Extension;
+
+                string filepatch = Path.Combine(path, nameFile);
+
+                //var filepatch = "C:\\DDDCore3\\Agiles-backend-api\\WebApi\\Archivos\\" + request.Archive.FileName;
+                proyectoNuevo.Url_Archive = nameFile;
                 proyectoNuevo.Focus = request.Focus;
                 proyectoNuevo.Cut = request.Cut;
                 proyectoNuevo.Date = DateTime.Today;
@@ -56,7 +65,7 @@ namespace Application.Services.Pojects
                     //muevo el archivo
                     using (var stream = System.IO.File.Create(filepatch))
                     {
-                        request.Archive.CopyToAsync(stream);
+                        request.Archive.CopyTo(stream);
                     }
                     //retorno mensaje
                     return new CrearProyectoResponse() { Mensaje = $"Se registro con exito al proyecto: {proyectoNuevo.Title}." };
