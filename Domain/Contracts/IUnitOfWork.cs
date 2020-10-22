@@ -16,6 +16,9 @@ namespace Domain.Contracts
 
         IProyectoRepository ProyectoRepository { get; }
 
+        IAdvisoryRepository AdvisoryRepository { get; }
+
+
         int Commit();
     }
 }

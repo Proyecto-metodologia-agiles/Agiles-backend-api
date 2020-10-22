@@ -73,7 +73,7 @@ namespace Infrastructure.Base
 
         public IAdvisoryRepository _advisoryRepository;
 
-        public IAdvisoryRepository advisoryRepository 
+        public IAdvisoryRepository AdvisoryRepository
         {
             get
             {
