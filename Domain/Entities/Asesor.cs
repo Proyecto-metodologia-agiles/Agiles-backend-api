@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Domain.Base;
+﻿using Domain.Base;
 
 namespace Domain.Entities
 {
@@ -15,7 +12,7 @@ namespace Domain.Entities
         public string Type_Asser { get; set; }
         public string Phone { get; set; }
         public string Direction { get; set; }
-        
+
         public Asesor()
         {
 

@@ -1,11 +1,8 @@
 ﻿using Application.Requests.Pojects;
 using Domain.Contracts;
 using Domain.Entities;
-using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 
 namespace Application.Services.Pojects
@@ -26,7 +23,7 @@ namespace Application.Services.Pojects
 
             try
             {
-               
+
                 Proyecto proyectoNuevo = new Proyecto
                 {
                     Id = request.Id
@@ -39,7 +36,8 @@ namespace Application.Services.Pojects
                 proyectoNuevo.Url_Archive = nameFile;
                 Proyecto proyecto = _unitOfWork.ProyectoRepository.Find(proyectoNuevo.Id);
 
-                if (proyecto!=null) { 
+                if (proyecto != null)
+                {
                     proyecto.Url_Archive = proyectoNuevo.Url_Archive;
                     if (_unitOfWork.Commit() > 0)
                     {
@@ -58,14 +56,16 @@ namespace Application.Services.Pojects
                     response.Message = $"Se actulizo con exito al proyecto: {proyectoNuevo.Title}.";
                     return response;
                 }
-                else { 
+                else
+                {
                     response.Proyecto = null;
                     response.Status = true;
                     response.Message = "No existe ningun proyecto con esa ID";
                     return response;
                 }
-               
-            }catch(Exception e)
+
+            }
+            catch (Exception e)
             {
                 response.Proyecto = null;
                 response.Status = true;
@@ -77,5 +77,5 @@ namespace Application.Services.Pojects
     }
 
 
-   
+
 }

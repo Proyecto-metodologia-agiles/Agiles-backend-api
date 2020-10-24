@@ -1,10 +1,7 @@
 ﻿using Domain.Base;
 using Domain.Entities.Enums;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Domain.Entities
 {
@@ -56,7 +53,7 @@ namespace Domain.Entities
 
         public EnumStatusRegisterCommitteMember IsValid()
         {
-           
+
 
             if (FullName == string.Empty ||
                FullName.IsData() != TypeData.Name ||
@@ -64,7 +61,7 @@ namespace Domain.Entities
                Email.IsData() != TypeData.Email ||
                Phone == string.Empty ||
                Phone.IsData() != TypeData.Phone ||
-               Password == string.Empty||
+               Password == string.Empty ||
                Identification.IsData() != TypeData.Document)
             {
                 return EnumStatusRegisterCommitteMember.SomeIsEmpty;
@@ -72,12 +69,12 @@ namespace Domain.Entities
             return EnumStatusRegisterCommitteMember.Success;
         }
 
-        public  EnumStatusRegisterCommitteMember Valid(EnumStatusRegisterCommitteMember status)
+        public EnumStatusRegisterCommitteMember Valid(EnumStatusRegisterCommitteMember status)
         {
             return status;
         }
 
-        public static CommitteeMember Build(string fullName, string email, string phone, string password,string identification)
+        public static CommitteeMember Build(string fullName, string email, string phone, string password, string identification)
         {
             return new CommitteeMember
             {
@@ -86,7 +83,7 @@ namespace Domain.Entities
                 FullName = fullName,
                 Password = password,
                 Identification = identification
-                
+
             };
         }
 

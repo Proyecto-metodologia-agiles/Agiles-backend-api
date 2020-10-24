@@ -2,9 +2,7 @@
 using Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 
 namespace Application.Services.Pojects
@@ -31,21 +29,21 @@ namespace Application.Services.Pojects
 
 
 
-                string nameFile = "Archivos/"+DateTime.Now.Ticks.ToString() + fi.Extension;
+                string nameFile = "Archivos/" + DateTime.Now.Ticks.ToString() + fi.Extension;
 
                 string filepatch = Path.Combine(path, nameFile);
 
                 //var filepatch = "C:\\DDDCore3\\Agiles-backend-api\\WebApi\\Archivos\\" + request.Archive.FileName;
                 proyectoNuevo.Url_Archive = nameFile;
                 proyectoNuevo.Focus = request.Focus;
-                proyectoNuevo.Cut = request.Cut;
+                proyectoNuevo.Cut = Convert.ToInt32(request.Cut);
                 proyectoNuevo.Date = DateTime.Today;
                 proyectoNuevo.Line = request.Line;
                 //busco el asesor metodologico
-                Asesor asesormetodologico = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Id == request.Metodologic_Advisor);
+                Asesor asesormetodologico = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Identification == request.Metodologic_Advisor);
                 proyectoNuevo.Metodologic_Advisor = asesormetodologico;
                 //busco el asesor tematico
-                Asesor asesormetemaico = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Id == request.Metodologic_Advisor);
+                Asesor asesormetemaico = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Identification == request.Thematic_Advisor);
                 proyectoNuevo.Thematic_Advisor = asesormetemaico;
                 //busco estudiante1 
                 Estudiante estudiante1 = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Student_1);
@@ -58,6 +56,8 @@ namespace Application.Services.Pojects
 
                 if (proyectoNuevo.Verify_proyecto(proyectoNuevo) == "Proyecto registrado correctamente")
                 {
+                    estudiante1.Estado = 1;
+                    estudiante2.Estado = 1;
                     _unitOfWork.ProyectoRepository.Add(proyectoNuevo);
                     _unitOfWork.Commit();
 
@@ -87,10 +87,10 @@ namespace Application.Services.Pojects
         public string Title { get; set; }
         public IFormFile Archive { get; set; }
         public string Focus { get; set; }
-        public int Cut { get; set; }
+        public string Cut { get; set; }
         public string Line { get; set; }
-        public int Thematic_Advisor { get; set; }
-        public int Metodologic_Advisor { get; set; }
+        public string Thematic_Advisor { get; set; }
+        public string Metodologic_Advisor { get; set; }
         public string Student_1 { get; set; }
         public string Student_2 { get; set; }
     }

@@ -10,7 +10,7 @@ namespace Infrastructure.Base
     {
         private IDbContext _dbContext;
 
-        private  readonly Lazy<ICommitteeMemberRepository> _committeeMemberRepository;
+        private readonly Lazy<ICommitteeMemberRepository> _committeeMemberRepository;
 
 
 
@@ -19,7 +19,7 @@ namespace Infrastructure.Base
         {
             _dbContext = context;
             //singleton using Lazy
-            _committeeMemberRepository = new Lazy<ICommitteeMemberRepository>( ()=>  new CommitteeMemberRepository(_dbContext));
+            _committeeMemberRepository = new Lazy<ICommitteeMemberRepository>(() => new CommitteeMemberRepository(_dbContext));
         }
         public ICommitteeMemberRepository CommitteeMemberRepository
         {
@@ -59,11 +59,11 @@ namespace Infrastructure.Base
 
         public IProyectoRepository _proyectoRepository;
 
-        public IProyectoRepository ProyectoRepository 
+        public IProyectoRepository ProyectoRepository
         {
-            get 
+            get
             {
-                if (_proyectoRepository == null) 
+                if (_proyectoRepository == null)
                 {
                     _proyectoRepository = new ProyectoRepository(_dbContext);
                 }
@@ -107,6 +107,6 @@ namespace Infrastructure.Base
             }
         }
 
-       
+
     }
 }

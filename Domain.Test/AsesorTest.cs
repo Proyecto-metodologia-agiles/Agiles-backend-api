@@ -8,13 +8,13 @@ namespace Domain.Test
     public class AsesorTest
     {
         [SetUp]
-        public void Setup() 
+        public void Setup()
         {
-       
+
         }
 
         [Test]
-        public void RegistroAsesorCorrecto() 
+        public void RegistroAsesorCorrecto()
         {
             var asesor = new Asesor();
             asesor.Name_Complet = "Kevin Acosta";
@@ -30,7 +30,7 @@ namespace Domain.Test
         }
 
         [Test]
-        public void RegistroAsesorIncorrecto() 
+        public void RegistroAsesorIncorrecto()
         {
             var asesor = new Asesor();
             asesor.Name_Complet = "Alex Acosta";

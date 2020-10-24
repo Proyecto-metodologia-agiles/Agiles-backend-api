@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-public static class IsNumeric
+﻿public static class IsNumeric
 {
     public static int IsN(string s)
     {

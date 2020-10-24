@@ -1,9 +1,7 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 
 namespace Application.Services.Studens
@@ -24,6 +22,36 @@ namespace Application.Services.Studens
             var res = _unitOfWork.AsesorRepository.FindBy();
             _unitOfWork.Dispose();
             return res.ToList();
+        }
+
+        public List<Asesor> GetMetodologic()
+        {
+            var res = _unitOfWork.AsesorRepository.FindBy();
+            _unitOfWork.Dispose();
+            List<Asesor> metodologicos = new List<Asesor>();
+            foreach (var itemlist in res.ToList())
+            {
+                if (itemlist.Type_Asser.Equals("Metodologico"))
+                {
+                    metodologicos.Add(itemlist);
+                }
+            }
+            return metodologicos;
+        }
+
+        public List<Asesor> GetThematic()
+        {
+            var res = _unitOfWork.AsesorRepository.FindBy();
+            _unitOfWork.Dispose();
+            List<Asesor> tematicos = new List<Asesor>();
+            foreach (var itemlist in res.ToList())
+            {
+                if (itemlist.Type_Asser.Equals("Tematico"))
+                {
+                    tematicos.Add(itemlist);
+                }
+            }
+            return tematicos;
         }
 
         public Asesor GetId(int id)

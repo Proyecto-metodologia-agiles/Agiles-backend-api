@@ -1,9 +1,6 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
-using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 
 namespace Application.Services.Advisorys
@@ -19,13 +16,13 @@ namespace Application.Services.Advisorys
 
         public CreateAdvisoryResponse GuardarAdvisory(CreateAdvisoryRequest request)
         {
-            Proyecto proyecto = _unitOfWork.ProyectoRepository.FindFirstOrDefault(t => t.Id == request.IdProyecto);
+            Proyecto proyecto = _unitOfWork.ProyectoRepository.FindFirstOrDefault(t => t.Title == request.TituloProyecto);
 
-            Asesor asesormetodologico = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Id == request.IdMetodologicAdvisor);
-           
-            Asesor asesormetemaico = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Id == request.IdThematicAdvisor);
+            Asesor asesormetodologico = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Identification == request.IdMetodologicAdvisor);
 
-            Advisory Asesoria = _unitOfWork.AdvisoryRepository.FindFirstOrDefault(t => t.Proyect.Id == request.IdProyecto);
+            Asesor asesormetemaico = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Identification == request.IdThematicAdvisor);
+
+            Advisory Asesoria = _unitOfWork.AdvisoryRepository.FindFirstOrDefault(t => t.Proyect.Title == request.TituloProyecto);
 
 
             if (Asesoria == null)
@@ -37,13 +34,16 @@ namespace Application.Services.Advisorys
                 AsesoriaNueva.Proyect = proyecto;
                 AsesoriaNueva.semester = request.semester;
                 AsesoriaNueva.ThematicAdvisor = asesormetemaico;
-                AsesoriaNueva.Year = request.Year;
+                AsesoriaNueva.Year = DateTime.Today.Year.ToString();
 
-                if ( AsesoriaNueva.Verify_advisory(AsesoriaNueva) == 1)
+                proyecto.Thematic_Advisor = asesormetemaico;
+                proyecto.Metodologic_Advisor = asesormetodologico;
+
+                if (AsesoriaNueva.Verify_advisory(AsesoriaNueva) == 1)
                 {
                     _unitOfWork.AdvisoryRepository.Add(AsesoriaNueva);
                     _unitOfWork.Commit();
-                  
+
                     return new CreateAdvisoryResponse() { Mensaje = $"Se registro con exito la asesoria al proyecto: {AsesoriaNueva.Proyect.Title}." };
                 }
                 else
@@ -61,12 +61,12 @@ namespace Application.Services.Advisorys
 
     public class CreateAdvisoryRequest
     {
-        public int  IdProyecto  { get; set; }
-        public int IdThematicAdvisor  { get; set; }
-        public int  IdMetodologicAdvisor  { get; set; }
+        public string TituloProyecto { get; set; }
+        public string IdThematicAdvisor { get; set; }
+        public string IdMetodologicAdvisor { get; set; }
         public int AssignedHours { get; set; }
-        public String semester { get; set; }
-        public String Year { get; set; }
+        public string semester { get; set; }
+   
     }
     public class CreateAdvisoryResponse
     {

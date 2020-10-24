@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Application;
-using Application.Services;
+﻿using Application.Services;
 using Application.Services.Studens;
 using Domain.Contracts;
 using Domain.Entities;
 using Infrastructure;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace WebApi.Controllers
 {
@@ -40,6 +35,15 @@ namespace WebApi.Controllers
         {
             consultStudentService servicio = new consultStudentService(_unitOfWork);
             List<Estudiante> Lista = servicio.GetAll();
+            return Lista;
+
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<Estudiante> EstudiantesSinProyecto()
+        {
+            consultStudentService servicio = new consultStudentService(_unitOfWork);
+            List<Estudiante> Lista = servicio.GetEstate0();
             return Lista;
 
         }

@@ -1,7 +1,4 @@
 ﻿using Domain.Base;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Entities
 {
@@ -14,6 +11,7 @@ namespace Domain.Entities
         public string Celular { get; set; }
         public int Edad { get; set; }
         public string Semestre { get; set; }
+        public int Estado { get; set; }
 
         public Estudiante()
         {
@@ -23,7 +21,7 @@ namespace Domain.Entities
 
         public string ValidarEstudiante(Estudiante estudiante)
         {
-            if (estudiante.Cedula == null || estudiante.Celular== null || estudiante.Correo == null || estudiante.Edad == 0 || estudiante.Semestre == null || estudiante.NombreCompleto == null || estudiante.Password == null)
+            if (estudiante.Cedula == null || estudiante.Celular == null || estudiante.Correo == null || estudiante.Edad == 0 || estudiante.Semestre == null || estudiante.NombreCompleto == null || estudiante.Password == null)
             {
                 return "Digite los campos primordiales para su registro";
             }
@@ -34,6 +32,6 @@ namespace Domain.Entities
         }
     }
 
-   
+
 }
 

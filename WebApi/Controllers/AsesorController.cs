@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Application.Handles.Commite;
-using Application.Services.Asesors;
-using Application.Services.Committee;
+﻿using Application.Services.Asesors;
 using Application.Services.Studens;
 using Domain.Contracts;
 using Domain.Entities;
-using Domain.Entities.Enums;
 using Infrastructure;
-using Infrastructure.Base;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 
 namespace WebApi.Controllers
@@ -44,5 +37,22 @@ namespace WebApi.Controllers
             List<Asesor> Lista = servicio.GetAll();
             return Lista;
         }
+
+        [HttpGet("[action]")]
+        public IEnumerable<Asesor> AsesoresTematicos()
+        {
+            ConsultAsesorService servicio = new ConsultAsesorService(_unitOfWork);
+            List<Asesor> Lista = servicio.GetThematic();
+            return Lista;
+        }
+
+        [HttpGet("[action]")]
+        public IEnumerable<Asesor> AsesoresMetodologicos()
+        {
+            ConsultAsesorService servicio = new ConsultAsesorService(_unitOfWork);
+            List<Asesor> Lista = servicio.GetMetodologic();
+            return Lista;
+        }
+
     }
 }

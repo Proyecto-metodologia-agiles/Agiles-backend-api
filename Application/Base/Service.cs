@@ -1,15 +1,12 @@
 ﻿using Application.Interface;
 using Domain.Base;
 using Domain.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Application.Base
 {
     public class Service<T> : IService<T> where T : BaseEntity
     {
-        private  readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IGenericRepository<T> _genericRepository;
         public Service(IUnitOfWork unitOfWork, IGenericRepository<T> genericRepository)
         {
@@ -22,7 +19,7 @@ namespace Application.Base
         public T Create(T entity)
         {
             _genericRepository.Add(entity);
-            if(_unitOfWork.Commit() > 0)
+            if (_unitOfWork.Commit() > 0)
             {
                 return entity;
             }

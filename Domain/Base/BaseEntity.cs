@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Base
 {
@@ -12,7 +9,7 @@ namespace Domain.Base
 
     public abstract class Entity<T> : BaseEntity, IEntity<T>
     {
-        [Column("id",Order =1)]
+        [Column("id", Order = 1)]
         public virtual T Id { get; set; }
     }
 }

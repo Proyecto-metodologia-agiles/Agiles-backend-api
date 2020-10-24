@@ -17,20 +17,11 @@
  * @task 7 Crear Servicios genericos
  */
 
-
-using Domain.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Application.Interface
 {
-    public interface IService<T>  where T : class
+    public interface IService<T> where T : class
     {
-     
+
         public T Find(object id);
         public T Create(T entity);
         public bool Delete(T entity);
