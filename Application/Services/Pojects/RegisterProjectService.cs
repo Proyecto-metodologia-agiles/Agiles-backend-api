@@ -47,11 +47,20 @@ namespace Application.Services.Pojects
                 proyectoNuevo.Thematic_Advisor = asesormetemaico;
                 //busco estudiante1 
                 Estudiante estudiante1 = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Student_1);
-                //busco estudiante1 
-                Estudiante estudiante2 = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Student_2);
+                //busco estudiante2 si existe o no
+                Estudiante estudiante2;
+                if (request.Student_2 != null)
+                {
+                     estudiante2 = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Student_2);
+                }
+                else
+                {
+                    estudiante2 = null;
+                }
 
                 proyectoNuevo.Student_1 = estudiante1;
                 proyectoNuevo.Student_2 = estudiante2;
+                proyectoNuevo.State = 0;
 
 
                 if (proyectoNuevo.Verify_proyecto(proyectoNuevo) == "Proyecto registrado correctamente")

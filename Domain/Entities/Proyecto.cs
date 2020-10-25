@@ -16,11 +16,13 @@ namespace Domain.Entities
         public Asesor Metodologic_Advisor { get; set; }
         public Estudiante Student_1 { get; set; }
         public Estudiante Student_2 { get; set; }
+        public int State { get; set; }
 
 
         public Proyecto()
         {
             this.Cut = 0;
+            this.State = 0;
         }
 
 

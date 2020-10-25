@@ -36,8 +36,10 @@ namespace Application.Services.Advisorys
                 AsesoriaNueva.ThematicAdvisor = asesormetemaico;
                 AsesoriaNueva.Year = DateTime.Today.Year.ToString();
 
+                //modifico el registro proyecto 
                 proyecto.Thematic_Advisor = asesormetemaico;
                 proyecto.Metodologic_Advisor = asesormetodologico;
+                proyecto.State = 1;
 
                 if (AsesoriaNueva.Verify_advisory(AsesoriaNueva) == 1)
                 {
