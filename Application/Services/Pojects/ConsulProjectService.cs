@@ -38,7 +38,7 @@ namespace Application.Services.Pojects
             List<Proyecto> asesorados = new List<Proyecto>();
             foreach (var itemlist in res.ToList())
             {
-                if (itemlist.Student_1.Estado==1 || itemlist.Student_2.Estado==1)
+                if (itemlist.State ==1)
                 {
                     asesorados.Add(itemlist);
                 }
@@ -53,7 +53,7 @@ namespace Application.Services.Pojects
             List<Proyecto> noasesorados = new List<Proyecto>();
             foreach (var itemlist in res.ToList())
             {
-                if (itemlist.Student_1.Estado == 0 && itemlist.Student_2.Estado == 0)
+                if (itemlist.State == 0)
                 {
                     noasesorados.Add(itemlist);
                 }

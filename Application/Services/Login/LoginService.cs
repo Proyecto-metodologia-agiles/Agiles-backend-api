@@ -15,7 +15,6 @@ namespace Application.Services.Login
         public LoginService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-
         }
  
 
