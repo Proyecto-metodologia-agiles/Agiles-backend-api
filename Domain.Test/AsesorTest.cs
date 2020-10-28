@@ -40,7 +40,7 @@ namespace Domain.Test
             asesor.Phone = "312358934";
             asesor.Type_Asser = "TEMATICO";
 
-            Assert.AreEqual(asesor.Validar_Asesor(asesor), "Digite los campos primordiales para su registro");
+            Assert.AreEqual(asesor.Validar_Asesor(asesor), "Digite los campos primordiales para el registro");
 
         }
 
