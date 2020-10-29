@@ -49,13 +49,15 @@ namespace Application.Services.Pojects
                 Estudiante estudiante1 = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Student_1);
                 //busco estudiante2 si existe o no
                 Estudiante estudiante2;
-                if (request.Student_2 != null)
+                if (request.Student_2 == null)
                 {
-                     estudiante2 = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Student_2);
+                    estudiante2 = null;
+                    
                 }
                 else
                 {
-                    estudiante2 = null;
+                    estudiante2 = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Cedula == request.Student_2);
+                    estudiante2.Estado = 1;
                 }
 
                 proyectoNuevo.Student_1 = estudiante1;
@@ -66,7 +68,7 @@ namespace Application.Services.Pojects
                 if (proyectoNuevo.Verify_proyecto(proyectoNuevo) == "Proyecto registrado correctamente")
                 {
                     estudiante1.Estado = 1;
-                    estudiante2.Estado = 1;
+                
                     _unitOfWork.ProyectoRepository.Add(proyectoNuevo);
                     _unitOfWork.Commit();
 

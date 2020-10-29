@@ -27,7 +27,7 @@ namespace WebApi.Controllers
         [HttpPost("[action]")]
         public ActionResult<CrearProyectoResponse> Post([FromForm] CrearProyectoRequest request)
         {
-            RegisterProjectService _service = new RegisterProjectService(_unitOfWork);
+           RegisterProjectService _service = new RegisterProjectService(_unitOfWork);
             CrearProyectoResponse response = _service.GuardarProyecto(request, _appEnvironment.ContentRootPath);
             return Ok(response);
         }
