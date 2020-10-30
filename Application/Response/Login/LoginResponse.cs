@@ -14,6 +14,8 @@ namespace Application.Response.Login
         public string Idetification { get; set; }
         public string Telephone { get; set; }
         public string Message { get; set; }
+
+        public bool Fail { set; get; } = false;
         public LoginResponse() 
         {
         }
