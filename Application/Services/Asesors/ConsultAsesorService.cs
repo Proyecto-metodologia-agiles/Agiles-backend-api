@@ -61,6 +61,28 @@ namespace Application.Services.Studens
             return ConsultarID;
         }
 
+
+        public Asesor GetProyectos(int id)
+        {   var res = _unitOfWork.AsesorRepository.FindBy(x => x.Id == id)?.FirstOrDefault();
+            
+            if(res != null)
+            {
+                var projects = _unitOfWork.ProyectoRepository.FindBy(x => x.Metodologic_Advisor.Id == id || x.Thematic_Advisor.Id == id).ToList();
+                projects.ForEach(x =>
+                {
+                    x.Metodologic_Advisor = null;
+                    x.Student_1 = null;
+                    x.Thematic_Advisor = null;
+                    x.Student_2 = null;
+                    res.Projects.Add(x);
+                });
+                _unitOfWork.Dispose();
+            }
+           
+            return res;
+
+        } 
+
     }
 }
 
