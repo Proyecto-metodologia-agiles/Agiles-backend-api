@@ -56,16 +56,9 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpGet("[action]")]
-        public IEnumerable<Asesor> AsesoresProject()
-        {
-            ConsultAsesorService servicio = new ConsultAsesorService(_unitOfWork);
-            List<Asesor> Lista = servicio.GetMetodologic();
-            return Lista;
-        }
 
         [HttpGet("[action]")]
-        public ActionResult<Asesor> GetAsesor(uint id)
+        public ActionResult<ProyectosAsociadosResponse> GetProyectosAsociados(uint id)
         {
 
             if(id == 0)
@@ -74,20 +67,22 @@ namespace WebApi.Controllers
                 {
                     Status = false,
                     Message = "Id requerido", 
-                });;
+                });
             }
 
             ConsultAsesorService servicio = new ConsultAsesorService(_unitOfWork);
-            Asesor Lista = servicio.GetProyectos(Convert.ToInt32(id));
+            ProyectosAsociadosResponse Lista = servicio.GetProyectosAsociados(Convert.ToInt32(id));
             if(Lista == null)
             {
                 return BadRequest(new
                 {
                     Status = false,
                     Message = "no hay datos que mostrar",
-                }); ;
+                }); 
             }
             return Ok(Lista);
         }
+
+       
     }
 }

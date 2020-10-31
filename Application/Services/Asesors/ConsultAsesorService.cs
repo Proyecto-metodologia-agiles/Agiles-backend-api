@@ -62,27 +62,38 @@ namespace Application.Services.Studens
         }
 
 
-        public Asesor GetProyectos(int id)
-        {   var res = _unitOfWork.AsesorRepository.FindBy(x => x.Id == id)?.FirstOrDefault();
+        public ProyectosAsociadosResponse GetProyectosAsociados(int id)
+        {
+            ProyectosAsociadosResponse response = new ProyectosAsociadosResponse();
+            var res = _unitOfWork.AsesorRepository.FindBy(x => x.Id == id)?.FirstOrDefault();
             
             if(res != null)
             {
                 var projects = _unitOfWork.ProyectoRepository.FindBy(x => x.Metodologic_Advisor.Id == id || x.Thematic_Advisor.Id == id).ToList();
-                projects.ForEach(x =>
+                if (projects.Count() != 0) {
+                    _unitOfWork.Dispose();
+                    response.mensaje = "Usted tiene " + projects.Count() + " proyectos asociados";
+                    response.projects = projects;
+                    return response;
+                }
+                else
                 {
-                    x.Metodologic_Advisor = null;
-                    x.Student_1 = null;
-                    x.Thematic_Advisor = null;
-                    x.Student_2 = null;
-                    res.Projects.Add(x);
-                });
-                _unitOfWork.Dispose();
+                    response.mensaje = "Usted tiene " + projects.Count() + " proyectos asociados";
+                    response.projects = null;
+                    return response;
+                }
             }
-           
-            return res;
-
+            else
+            {
+                return null;
+            }
         } 
+    }
 
+    public class ProyectosAsociadosResponse
+    {
+        public List<Proyecto> projects { get; set; }
+        public string  mensaje { get; set; }
     }
 }
 

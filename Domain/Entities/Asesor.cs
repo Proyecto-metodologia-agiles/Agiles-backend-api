@@ -15,8 +15,7 @@ namespace Domain.Entities
         public string Type_Asser { get; set; }
         public string Phone { get; set; }
         public string Direction { get; set; }
-        [NotMapped]
-        public virtual List<Proyecto> Projects { set; get; } = new List<Proyecto>();
+      
 
         public Asesor()
         {
