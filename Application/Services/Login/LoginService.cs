@@ -25,7 +25,7 @@ namespace Application.Services.Login
             try
             {
              
-                var res = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Correo == request.Username && t.Password == request.Password);
+                var res = _unitOfWork.EstudianteRepository.FindFirstOrDefault(t => t.Correo == request.Email && t.Password == request.Password);
                 if (res != null)
                 {
                     response.Email = res.Correo;
@@ -39,7 +39,7 @@ namespace Application.Services.Login
                 }
                 else
                 {
-                    var res2 = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Email == request.Username && t.Password == request.Password);
+                    var res2 = _unitOfWork.AsesorRepository.FindFirstOrDefault(t => t.Email == request.Email && t.Password == request.Password);
                     if (res2 != null)
                     {
                         response.Email = res2.Email;
@@ -53,7 +53,7 @@ namespace Application.Services.Login
                     }
                     else
                     {
-                        var res3 = _unitOfWork.CommitteeMemberRepository.FindFirstOrDefault(t => t.Email == request.Username && t.Password == request.Password);
+                        var res3 = _unitOfWork.CommitteeMemberRepository.FindFirstOrDefault(t => t.Email == request.Email && t.Password == request.Password);
                         if (res3 != null)
                         {
                             response.Email = res3.Email;

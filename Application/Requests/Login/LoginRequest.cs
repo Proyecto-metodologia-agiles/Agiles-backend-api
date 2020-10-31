@@ -6,16 +6,16 @@ namespace Application.Requests.Login
 {
     public class LoginRequest
     {
-        public string Username { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
 
         public LoginRequest() 
         {
         }
 
-        public LoginRequest(string username, string password) 
+        public LoginRequest(string email, string password) 
         {
-            this.Username = username;
+            this.Email = email;
             this.Password = password;
         }
 
