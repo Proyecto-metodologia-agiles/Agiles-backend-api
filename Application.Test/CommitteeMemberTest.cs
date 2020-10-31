@@ -31,7 +31,7 @@ namespace Application.Test
             _createService = new CreateCommitteeMemberService(_unitOfWork, _unitOfWork.CommitteeMemberRepository);
         
             */
-            }
+         }
 
 
         /*
