@@ -101,7 +101,7 @@ namespace WebApi.Controllers
             }
 
             ConsultAsesorService servicio = new ConsultAsesorService(_unitOfWork);
-            AsesoriasAsociadosResponse asesorias = servicio.GetProyectosAsociados2(Convert.ToInt32(id));
+            AsesoriasAsociadosResponse asesorias = servicio.GetAsesoriasAsociadas(Convert.ToInt32(id));
             if (asesorias == null)
             {
                 return BadRequest(new

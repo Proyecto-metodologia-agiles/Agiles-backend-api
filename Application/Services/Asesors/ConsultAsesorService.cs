@@ -91,7 +91,7 @@ namespace Application.Services.Studens
         }
 
 
-        public AsesoriasAsociadosResponse GetProyectosAsociados2(int id)
+        public AsesoriasAsociadosResponse GetAsesoriasAsociadas(int id)
         {
             AsesoriasAsociadosResponse response = new AsesoriasAsociadosResponse();
             var res = _unitOfWork.AsesorRepository.FindBy(x => x.Id == id)?.FirstOrDefault();
