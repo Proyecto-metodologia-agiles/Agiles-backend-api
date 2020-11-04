@@ -107,7 +107,7 @@ namespace Application.Services.Studens
                 }
                 else
                 {
-                    response.mensaje = "Usted tiene no tiene asesorias asociados hasta la fecha:" + DateTime.Today;
+                    response.mensaje = "Usted tiene no tiene asesorias asociadas hasta la fecha:" + DateTime.Today;
                     response.asesorias = null;
                     return response;
                 }
