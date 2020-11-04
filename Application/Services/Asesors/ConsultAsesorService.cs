@@ -1,5 +1,7 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
+using Microsoft.AspNetCore.Http.Features;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -66,19 +68,18 @@ namespace Application.Services.Studens
         {
             ProyectosAsociadosResponse response = new ProyectosAsociadosResponse();
             var res = _unitOfWork.AsesorRepository.FindBy(x => x.Id == id)?.FirstOrDefault();
-            
             if(res != null)
             {
-                var projects = _unitOfWork.ProyectoRepository.FindBy(x => x.Metodologic_Advisor.Id == id || x.Thematic_Advisor.Id == id).ToList();
-                if (projects.Count() != 0) {
+                var asesoriasAsociadas = _unitOfWork.ProyectoRepository.FindBy(x => x.Metodologic_Advisor.Id == id || x.Thematic_Advisor.Id == id).ToList();
+                if (asesoriasAsociadas.Count() != 0) {
                     _unitOfWork.Dispose();
-                    response.mensaje = "Usted tiene " + projects.Count() + " proyectos asociados";
-                    response.projects = projects;
+                    response.mensaje = "Usted tiene " + asesoriasAsociadas.Count() + " proyectos asociados";
+                    response.projects = asesoriasAsociadas;
                     return response;
                 }
                 else
                 {
-                    response.mensaje = "Usted tiene " + projects.Count() + " proyectos asociados";
+                    response.mensaje = "Usted tiene no tiene  proyectos asociados hasta la fecha:"+DateTime.Today;
                     response.projects = null;
                     return response;
                 }
@@ -87,13 +88,49 @@ namespace Application.Services.Studens
             {
                 return null;
             }
-        } 
+        }
+
+
+        public AsesoriasAsociadosResponse GetProyectosAsociados2(int id)
+        {
+            AsesoriasAsociadosResponse response = new AsesoriasAsociadosResponse();
+            var res = _unitOfWork.AsesorRepository.FindBy(x => x.Id == id)?.FirstOrDefault();
+            if (res != null)
+            {
+                var asesoriasAsociadas = _unitOfWork.AdvisoryRepository.FindBy(x => x.MetodologicAdvisor.Id == id || x.ThematicAdvisor.Id == id, includeProperties: "Proyect").ToList();
+                if (asesoriasAsociadas.Count() != 0)
+                {
+                    _unitOfWork.Dispose();
+                    response.mensaje = "Usted tiene " + asesoriasAsociadas.Count() + " asesorias asociadas";
+                    response.asesorias = asesoriasAsociadas;
+                    return response;
+                }
+                else
+                {
+                    response.mensaje = "Usted tiene no tiene asesorias asociados hasta la fecha:" + DateTime.Today;
+                    response.asesorias = null;
+                    return response;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 
     public class ProyectosAsociadosResponse
     {
         public List<Proyecto> projects { get; set; }
         public string  mensaje { get; set; }
+        public int Horas { get; set; }
+    }
+
+    public class AsesoriasAsociadosResponse
+    {
+        public List<Advisory> asesorias { get; set; }
+        public string mensaje { get; set; }
+   
     }
 }
 

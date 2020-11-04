@@ -71,18 +71,51 @@ namespace WebApi.Controllers
             }
 
             ConsultAsesorService servicio = new ConsultAsesorService(_unitOfWork);
-            ProyectosAsociadosResponse Lista = servicio.GetProyectosAsociados(Convert.ToInt32(id));
-            if(Lista == null)
+            ProyectosAsociadosResponse proyectos = servicio.GetProyectosAsociados(Convert.ToInt32(id));
+            if(proyectos == null)
             {
                 return BadRequest(new
                 {
                     Status = false,
                     Message = "no hay datos que mostrar",
-                }); 
+                });
             }
-            return Ok(Lista);
+            else
+            {
+                return Ok(proyectos);
+            }
+           
         }
 
-       
+        [HttpGet("[action]")]
+        public ActionResult<ProyectosAsociadosResponse> GetAsesoriasAsociadas(uint id)
+        {
+
+            if (id == 0)
+            {
+                return BadRequest(new
+                {
+                    Status = false,
+                    Message = "Id requerido",
+                });
+            }
+
+            ConsultAsesorService servicio = new ConsultAsesorService(_unitOfWork);
+            AsesoriasAsociadosResponse asesorias = servicio.GetProyectosAsociados2(Convert.ToInt32(id));
+            if (asesorias == null)
+            {
+                return BadRequest(new
+                {
+                    Status = false,
+                    Message = "no hay datos que mostrar",
+                });
+            }
+            else
+            {
+                return Ok(asesorias);
+            }
+
+        }
+
     }
 }
