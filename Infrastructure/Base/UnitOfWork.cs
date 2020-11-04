@@ -85,6 +85,34 @@ namespace Infrastructure.Base
             }
         }
 
+        public IEvaluationRepository _evaluationRepository;
+
+        public IEvaluationRepository EvaluationRepository 
+        {
+            get 
+            {
+                if (_evaluationRepository == null) 
+                {
+                    _evaluationRepository = new EvaluacionRepository(_dbContext)
+                }
+                return _evaluationRepository;
+            }
+        }
+
+        public IValorationRepository _valorationRepository;
+        
+        public IValorationRepository ValorationRepository 
+        {
+            get 
+            {
+                if (_valorationRepository == null) 
+                {
+                    _evaluationRepository == new ValoracionRepository(_dbContext)
+                }
+                return _valorationRepository;
+            }
+        }
+
 
         public int Commit()
         {

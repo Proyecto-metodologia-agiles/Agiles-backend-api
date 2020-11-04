@@ -16,6 +16,10 @@ namespace Domain.Contracts
 
         IAdvisoryRepository AdvisoryRepository { get; }
 
+        IEvaluationRepository EvaluationRepository { get; }
+
+        IValorationRepository ValorationRepository { get; }
+
 
         int Commit();
     }
