@@ -7,7 +7,7 @@ using Infrastructure.Base;
 
 namespace Infrastructure.Repositories
 {
-    public class ValoracionRepository: GenericRepository<Valoracion>, IEvaluationRepository
+    public class ValoracionRepository: GenericRepository<Valoracion>, IValorationRepository
     {
         public ValoracionRepository(IDbContext context) : base(context)
         {

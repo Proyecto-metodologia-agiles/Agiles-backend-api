@@ -20,6 +20,7 @@ namespace Infrastructure
         public DbSet<Advisory> Advisorys { get; set; }
 
         public DbSet<Evaluacion> Evaluation { get; set; }
+
         public DbSet<Valoracion> Valoration { get; set; }
 
         public ProyectoContext()

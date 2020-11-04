@@ -8,5 +8,6 @@ namespace Domain.Repositories
 {
     public interface IEvaluationRepository: IGenericRepository<Evaluacion>
     {
+
     }
 }

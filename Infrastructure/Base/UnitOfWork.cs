@@ -93,7 +93,7 @@ namespace Infrastructure.Base
             {
                 if (_evaluationRepository == null) 
                 {
-                    _evaluationRepository = new EvaluacionRepository(_dbContext)
+                    _evaluationRepository = new EvaluacionRepository(_dbContext);
                 }
                 return _evaluationRepository;
             }
@@ -107,7 +107,7 @@ namespace Infrastructure.Base
             {
                 if (_valorationRepository == null) 
                 {
-                    _evaluationRepository == new ValoracionRepository(_dbContext)
+                    _valorationRepository = new ValoracionRepository(_dbContext);
                 }
                 return _valorationRepository;
             }
