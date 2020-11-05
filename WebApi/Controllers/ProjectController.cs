@@ -64,7 +64,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("[action]")]
-        public ActionResult<CreateEvaluacionResponse> CreateEvaluation([FromForm] CreateEvaluacionRequest request)
+        public ActionResult<CreateEvaluacionResponse> CreateEvaluation([FromBody] CreateEvaluacionRequest request)
         {
             CreateEvaluationService _service = new CreateEvaluationService(_unitOfWork);
             CreateEvaluacionResponse response = _service.Create(request);
@@ -73,7 +73,7 @@ namespace WebApi.Controllers
 
 
         [HttpPost("[action]")]
-        public ActionResult<CreateValoracionResponse> CreateValoracion([FromForm] CreateValoracionRequest request)
+        public ActionResult<CreateValoracionResponse> CreateValoracion([FromBody] CreateValoracionRequest request)
         {
             CreateValoracionService _service = new CreateValoracionService(_unitOfWork);
             CreateValoracionResponse response = _service.Create(request);
