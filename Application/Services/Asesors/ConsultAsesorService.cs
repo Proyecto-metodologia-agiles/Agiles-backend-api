@@ -61,6 +61,39 @@ namespace Application.Services.Studens
             return ConsultarID;
         }
 
+
+        public ProyectosAsociadosResponse GetProyectosAsociados(int id)
+        {
+            ProyectosAsociadosResponse response = new ProyectosAsociadosResponse();
+            var res = _unitOfWork.AsesorRepository.FindBy(x => x.Id == id)?.FirstOrDefault();
+            
+            if(res != null)
+            {
+                var projects = _unitOfWork.ProyectoRepository.FindBy(x => x.Metodologic_Advisor.Id == id || x.Thematic_Advisor.Id == id).ToList();
+                if (projects.Count() != 0) {
+                    _unitOfWork.Dispose();
+                    response.mensaje = "Usted tiene " + projects.Count() + " proyectos asociados";
+                    response.projects = projects;
+                    return response;
+                }
+                else
+                {
+                    response.mensaje = "Usted tiene " + projects.Count() + " proyectos asociados";
+                    response.projects = null;
+                    return response;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        } 
+    }
+
+    public class ProyectosAsociadosResponse
+    {
+        public List<Proyecto> projects { get; set; }
+        public string  mensaje { get; set; }
     }
 }
 

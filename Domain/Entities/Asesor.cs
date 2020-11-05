@@ -1,4 +1,7 @@
 ﻿using Domain.Base;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -12,6 +15,7 @@ namespace Domain.Entities
         public string Type_Asser { get; set; }
         public string Phone { get; set; }
         public string Direction { get; set; }
+      
 
         public Asesor()
         {

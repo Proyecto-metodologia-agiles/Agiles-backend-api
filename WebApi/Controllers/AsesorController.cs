@@ -4,6 +4,7 @@ using Domain.Contracts;
 using Domain.Entities;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 
@@ -54,5 +55,34 @@ namespace WebApi.Controllers
             return Lista;
         }
 
+
+
+        [HttpGet("[action]")]
+        public ActionResult<ProyectosAsociadosResponse> GetProyectosAsociados(uint id)
+        {
+
+            if(id == 0)
+            {
+                return BadRequest(new
+                {
+                    Status = false,
+                    Message = "Id requerido", 
+                });
+            }
+
+            ConsultAsesorService servicio = new ConsultAsesorService(_unitOfWork);
+            ProyectosAsociadosResponse Lista = servicio.GetProyectosAsociados(Convert.ToInt32(id));
+            if(Lista == null)
+            {
+                return BadRequest(new
+                {
+                    Status = false,
+                    Message = "no hay datos que mostrar",
+                }); 
+            }
+            return Ok(Lista);
+        }
+
+       
     }
 }
