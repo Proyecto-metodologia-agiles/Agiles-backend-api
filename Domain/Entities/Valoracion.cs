@@ -11,6 +11,8 @@ namespace Domain.Entities
         public DateTime Date { get; set; }
         public string Valoration { get; set; }
         public Proyecto Project { get; set; }
+
+        public int ProjectId { set; get; }
         public Valoracion()
         {
         }

@@ -1,10 +1,17 @@
-﻿using Application.Requests.Pojects;
+﻿using Application.Requests.Evaluations;
+using Application.Requests.Pojects;
+using Application.Requests.Rating;
+using Application.Response.Evaluations;
+using Application.Response.Rating;
+using Application.Services.Evaluations;
 using Application.Services.Pojects;
+using Application.Services.Rating;
 using Domain.Contracts;
 using Domain.Entities;
 using Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 namespace WebApi.Controllers
 {
@@ -15,6 +22,7 @@ namespace WebApi.Controllers
         readonly ProyectoContext _context;
         readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _appEnvironment;
+
 
 
         public ProjectController(ProyectoContext context, IUnitOfWork unitOfWork, IWebHostEnvironment appEnvironment)
@@ -52,6 +60,23 @@ namespace WebApi.Controllers
         {
             UpdateProjectService _service = new UpdateProjectService(_unitOfWork);
             UpdateProjectServiceResponse response = _service.UpdateFile(request, _appEnvironment.ContentRootPath);
+            return Ok(response);
+        }
+
+        [HttpPost("[action]")]
+        public ActionResult<CreateEvaluacionResponse> CreateEvaluation([FromForm] CreateEvaluacionRequest request)
+        {
+            CreateEvaluationService _service = new CreateEvaluationService(_unitOfWork);
+            CreateEvaluacionResponse response = _service.Create(request);
+            return Ok(response);
+        }
+
+
+        [HttpPost("[action]")]
+        public ActionResult<CreateValoracionResponse> CreateValoracion([FromForm] CreateValoracionRequest request)
+        {
+            CreateValoracionService _service = new CreateValoracionService(_unitOfWork);
+            CreateValoracionResponse response = _service.Create(request);
             return Ok(response);
         }
 

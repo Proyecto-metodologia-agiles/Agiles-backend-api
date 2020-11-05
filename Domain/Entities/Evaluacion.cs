@@ -8,6 +8,9 @@ namespace Domain.Entities
     public class Evaluacion: Entity<int>
     {
         public string Observation { get; set; }
+
+        public int ProjectId { set; get; }
+
         public Proyecto Project { get; set; }
         public DateTime Date { get; set; }
 
@@ -15,11 +18,11 @@ namespace Domain.Entities
         {
         }
 
-        public Evaluacion(string observation, Proyecto project, DateTime date) 
+        public Evaluacion(string observation, int ProjectId, DateTime date) 
         {
 
             this.Observation = observation;
-            this.Project = project;
+            this.ProjectId = ProjectId;
             this.Date = date;
         }
 
