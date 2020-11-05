@@ -34,10 +34,10 @@ namespace Aplication.Test
                 new CrearEstudianteRequest
                 {
                     NombreCompleto = "fabian andres quintero mendez",
-                    Cedula = 12345,
+                    Cedula = "12345",
                     Correo ="grovveip@gmail.com",
                     Password = "12345",
-                    Celular = 304206576,
+                    Celular = "304206576",
                     Edad = 19,
                     Semestre = "2"
                 },
@@ -48,10 +48,10 @@ namespace Aplication.Test
                 new CrearEstudianteRequest
                 {
                     NombreCompleto = "fabian andres quintero mendez",
-                    Cedula = 12345,
+                    Cedula = "12345",
                     Correo = "grovveip@gmail.com",
                     Password = "12345",
-                    Celular = 304206576,
+                    Celular = "304206576",
                     Edad = 19,
                     Semestre = "2"
                 },
@@ -64,7 +64,7 @@ namespace Aplication.Test
                  NombreCompleto = "fabian andres quintero mendez",
                  Correo = "grovveip@gmail.com",
                  Password = "12345",
-                 Celular = 304206576,
+                 Celular = "304206576",
                  Edad = 19,
                  Semestre = "2"
              },
