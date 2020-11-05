@@ -1,13 +1,8 @@
 ﻿using Application.Services.Committee;
 using Domain.Contracts;
-using Domain.Entities;
 using Domain.Entities.Enums;
 using Infrastructure;
-using Infrastructure.Base;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Application.Test
 {
@@ -16,14 +11,14 @@ namespace Application.Test
     {
 
 
-        
+
         private CreateCommitteeMemberService _createService;
         private ProyectoContext _proyectoContext;
         private IUnitOfWork _unitOfWork;
 
 
-       [SetUp]
-       public void SetUp()
+        [SetUp]
+        public void SetUp()
         {
             /*
             _proyectoContext = new ProyectoContext();
@@ -31,7 +26,11 @@ namespace Application.Test
             _createService = new CreateCommitteeMemberService(_unitOfWork, _unitOfWork.CommitteeMemberRepository);
         
             */
+<<<<<<< HEAD
          }
+=======
+        }
+>>>>>>> a7549ab57f3dce82e3b8deafc1a3de59ec8a0baf
 
 
         /*
@@ -106,6 +105,6 @@ namespace Application.Test
         }
 
 
-        
+
     }
 }

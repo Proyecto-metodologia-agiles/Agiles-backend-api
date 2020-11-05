@@ -21,7 +21,7 @@ namespace Domain
 
 
 
-   
+
 
     public static partial class ObjectCustomer
     {
@@ -85,7 +85,7 @@ namespace Domain
         }
 
 
-        
+
 
         public static string RemoveAccentsWithRegEx(this string inputString)
         {
@@ -160,7 +160,7 @@ namespace Domain
         }
 
 
-      
+
         public static bool IsDocument<T>(this T doc)
         {
             try
@@ -178,7 +178,7 @@ namespace Domain
 
         public static bool IsPhone<T>(this T value)
         {
-            return value.ToString().All(char.IsNumber) && value.ToString().Length > 5 && value.ToString().Length <13;
+            return value.ToString().All(char.IsNumber) && value.ToString().Length > 5 && value.ToString().Length < 13;
         }
 
         public static bool IsValidEmail<T>(this T mail)
@@ -253,7 +253,7 @@ namespace Domain
         }
 
 
-        
+
 
     }
 }

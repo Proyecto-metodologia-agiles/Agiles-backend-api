@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Application.Handles.Commite;
-using Application.Requests.Pojects;
+﻿using Application.Requests.Pojects;
 using Application.Services.Pojects;
 using Domain.Contracts;
 using Domain.Entities;
-using Domain.Entities.Enums;
 using Infrastructure;
-using Infrastructure.Base;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -33,7 +27,7 @@ namespace WebApi.Controllers
         [HttpPost("[action]")]
         public ActionResult<CrearProyectoResponse> Post([FromForm] CrearProyectoRequest request)
         {
-            RegisterProjectService _service = new RegisterProjectService(_unitOfWork);
+           RegisterProjectService _service = new RegisterProjectService(_unitOfWork);
             CrearProyectoResponse response = _service.GuardarProyecto(request, _appEnvironment.ContentRootPath);
             return Ok(response);
         }

@@ -1,13 +1,12 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
-using System;
+using Microsoft.AspNetCore.Http.Features;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Application.Services.Pojects
 {
-    public  class ConsulProjectService
+    public class ConsulProjectService
     {
         readonly IUnitOfWork _unitOfWork;
 
@@ -30,6 +29,36 @@ namespace Application.Services.Pojects
             var ConsultarID = _unitOfWork.ProyectoRepository.Find(id);
             _unitOfWork.Dispose();
             return ConsultarID;
+        }
+
+        public List<Proyecto> GetComplet()
+        {
+            var res = _unitOfWork.ProyectoRepository.FindBy(includeProperties: "Thematic_Advisor,Metodologic_Advisor,Student_1,Student_2");
+            _unitOfWork.Dispose();
+            List<Proyecto> asesorados = new List<Proyecto>();
+            foreach (var itemlist in res.ToList())
+            {
+                if (itemlist.State ==1)
+                {
+                    asesorados.Add(itemlist);
+                }
+            }
+            return asesorados;
+        }
+
+        public List<Proyecto> GetInomplet()
+        {
+            var res = _unitOfWork.ProyectoRepository.FindBy(includeProperties: "Thematic_Advisor,Metodologic_Advisor,Student_1,Student_2");
+            _unitOfWork.Dispose();
+            List<Proyecto> noasesorados = new List<Proyecto>();
+            foreach (var itemlist in res.ToList())
+            {
+                if (itemlist.State == 0)
+                {
+                    noasesorados.Add(itemlist);
+                }
+            }
+            return noasesorados;
         }
     }
 }

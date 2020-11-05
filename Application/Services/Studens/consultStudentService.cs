@@ -1,9 +1,7 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 
 namespace Application.Services.Studens
@@ -33,5 +31,19 @@ namespace Application.Services.Studens
             return ConsultarID;
         }
 
+        public List<Estudiante> GetEstate0()
+        {
+            var res = _unitOfWork.EstudianteRepository.FindBy();
+            List<Estudiante> estudiantes_sin_proyecto = new List<Estudiante>();
+            foreach (var itemlist in res.ToList())
+            {
+                if (itemlist.Estado==0)
+                {
+                    estudiantes_sin_proyecto.Add(itemlist);
+                }
+            }
+            _unitOfWork.Dispose();
+            return estudiantes_sin_proyecto;
+        }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Application.Services
 {
@@ -29,6 +26,7 @@ namespace Application.Services
                 estudianteNuevo.Semestre = request.Semestre;
                 estudianteNuevo.NombreCompleto = request.NombreCompleto;
                 estudianteNuevo.Password = request.Password;
+                estudianteNuevo.Estado = 0;
 
                 if (estudianteNuevo.ValidarEstudiante(estudianteNuevo) == "Registrado correctamente")
                 {

@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Application.Requests.Pojects
 {
@@ -12,7 +9,7 @@ namespace Application.Requests.Pojects
         public int Id { set; get; }
 
         [Required]
-        
+
         public IFormFile Archive { get; set; }
     }
 }

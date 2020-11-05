@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Application.Handles.Commite;
-using Application.Services.Advisorys;
-using Application.Services.Committee;
-using Application.Services.Studens;
+﻿using Application.Services.Advisorys;
 using Domain.Contracts;
 using Domain.Entities;
-using Domain.Entities.Enums;
 using Infrastructure;
-using Infrastructure.Base;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace WebApi.Controllers
 {

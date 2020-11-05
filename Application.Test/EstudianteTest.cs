@@ -1,10 +1,8 @@
-﻿using NUnit.Framework;
-using System.Collections;
-using Domain.Entities;
-using Application.Services;
+﻿using Application.Services;
 using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.EntityFrameworkCore;
+using NUnit.Framework;
 
 namespace Aplication.Test
 {
@@ -29,7 +27,7 @@ namespace Aplication.Test
             var response = service.GuardarEstudiante(request);
             Assert.AreEqual(response.Mensaje, expected);
         }
-
+        /*
         private static IEnumerable Creations()
         {
             yield return new TestCaseData(
@@ -73,5 +71,6 @@ namespace Aplication.Test
              "Digite los campos primordiales para su registro"
          ).SetName("CreateFailFaltaId");
         }
+        */
     }
 }

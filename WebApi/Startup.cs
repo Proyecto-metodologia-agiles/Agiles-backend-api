@@ -1,26 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Domain.Contracts;
 using Infrastructure;
 using Infrastructure.Base;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace WebApi
 {
     public class Startup
     {
-        
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -96,7 +90,8 @@ namespace WebApi
                 }
             );
             #endregion
-            app.UseCors(option => {
+            app.UseCors(option =>
+            {
 
                 option.AllowAnyHeader();
                 option.AllowAnyMethod();
@@ -108,6 +103,6 @@ namespace WebApi
                 endpoints.MapControllers();
             });
         }
-        
+
     }
 }

@@ -1,9 +1,4 @@
-﻿using Infrastructure;
-using Infrastructure.Base;
-using Microsoft.EntityFrameworkCore;
-using System;
-
-namespace ConsoleUI
+﻿namespace ConsoleUI
 {
     class Program
     {
@@ -12,19 +7,19 @@ namespace ConsoleUI
             /*var optionsSqlServer = new DbContextOptionsBuilder<BancoContext>()
              .UseSqlServer("Server=.\\;Database=Banco;Trusted_Connection=True;MultipleActiveResultSets=true")
              .Options;*/
-           /*
-            var optionsInMemory = new DbContextOptionsBuilder<BancoContext>()
-             .UseInMemoryDatabase("Banco")
-             .Options;
+            /*
+             var optionsInMemory = new DbContextOptionsBuilder<BancoContext>()
+              .UseInMemoryDatabase("Banco")
+              .Options;
 
-            BancoContext context = new BancoContext(optionsInMemory);
-            
-            
-           */
+             BancoContext context = new BancoContext(optionsInMemory);
+
+
+            */
         }
 
-        
 
-       
+
+
     }
 }

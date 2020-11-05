@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Domain.Entities
+﻿namespace Domain.Entities
 {
     public interface Ipersona
     {
@@ -13,7 +9,7 @@ namespace Domain.Entities
         string Password { get; set; }
         string Celular { get; set; }
         int Edad { get; set; }
- 
+
 
     }
 }
