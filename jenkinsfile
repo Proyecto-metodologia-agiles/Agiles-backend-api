@@ -32,7 +32,7 @@ node {
   }
   
   stage('Report Email') {
-      emailext body: 'Se terminó de desplegar', subject: 'Test - Se termino de desplegar', to: 'bgonzalez@byasystems.com.co'
+      emailext body: 'Se terminó de desplegar', subject: 'Test - Se termino de desplegar', to: 'grovveip@gmail.com'
   }
   
   
