@@ -16,10 +16,10 @@ node {
     bat 'dotnet build Agil.sln --configuration Release'
   }
 
-  stage ('Test') {
-    bat 'cd C:\Users\fabia\Desktop\pruebas_postman'
-    bat 'newman run collection_test.json --insecure'
-  }
+  //stage ('Test') {
+    //bat 'cd C:\Users\fabia\Desktop\pruebas_postman'
+    //bat 'newman run collection_test.json --insecure'
+  //}
     
   stage ('Question') {
 	def userInput  = input( 'Do you approve deployment?' )
