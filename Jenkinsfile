@@ -35,6 +35,8 @@ node {
       emailext body: 'Se terminó de desplegar', subject: 'Test - Se termino de desplegar', to: 'grovveip@gmail.com'
   }
   
-  
-  
+ stage('Test') {
+    bat 'cd C:\Users\fabia\Desktop\pruebas_postman'
+    bat 'newman run collection_test.json --insecure'
+ }  
 }
