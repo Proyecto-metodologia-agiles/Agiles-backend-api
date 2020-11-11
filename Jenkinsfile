@@ -9,11 +9,11 @@ node {
   }
   
   stage('Clean') {
-    bat 'dotnet clean '
+    bat 'dotnet clean Agil.sln'
   }
   
   stage('Build') {
-    bat 'dotnet build  --configuration Release'
+    bat 'dotnet build Agil.sln --configuration Release'
   }
 
   //stage ('Test') {
@@ -28,7 +28,7 @@ node {
   }
 
   stage('Publish') {
-    bat 'dotnet publish -c Release -o C:/integracion_continua'
+    bat 'dotnet publish Agil.sln -c Release -o C:/integracion_continua'
   }
   
   stage('Report Email') {
