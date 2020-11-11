@@ -28,7 +28,7 @@ node {
   }
 	
   stage("Postman API Tests") {
-          sh "newman run C:/Users/fabia/Desktop/pruebas_postman/collection_test.json"
+          bat "newman run C:/Users/fabia/Desktop/pruebas_postman/collection_test.json"
  }
 	
   stage('Report Email') {
