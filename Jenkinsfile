@@ -16,10 +16,6 @@ node {
     bat 'dotnet build Agil.sln --configuration Release'
   }
 
-  //stage ('Test') {
-    //bat 'cd C:\Users\fabia\Desktop\pruebas_postman'
-    //bat 'newman run collection_test.json --insecure'
-  //}
     
   stage ('Question') {
 	def userInput  = input( 'Do you approve deployment?' )
@@ -30,7 +26,11 @@ node {
   stage('Publish') {
     bat 'dotnet publish Agil.sln -c Release -o C:/integracion_continua'
   }
-  
+	
+  stage("Postman API Tests") {
+          bat 'newman run C:/Users/fabia/Desktop/pruebas_postman/collection_test.json --insecure'
+ }
+	
   stage('Report Email') {
       emailext body: 'Se terminó de desplegar', subject: 'Test - Se termino de desplegar', to: 'grovveip@gmail.com'
   }
