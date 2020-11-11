@@ -28,7 +28,8 @@ node {
   }
 	
   stage("Postman API Tests") {
-         // bat "newman run C:/Users/fabia/Desktop/pruebas_postman/collection_test.json --insecure"
+     bat "cd c:\Users\fabia\AppData\Roaming\npm\node_modules\newman\bin"
+     bat "node newman run 'C:\\Users\\fabia\\Desktop\\pruebas_postman\\collection_test.json' --insecure"
  }
 	
   stage('Report Email') {
