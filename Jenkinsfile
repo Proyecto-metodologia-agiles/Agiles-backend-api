@@ -27,10 +27,7 @@ node {
     bat 'dotnet publish Agil.sln -c Release -o C:/integracion_continua'
   }
 	
-  stage("Postman API Tests") {
-     bat 'cd c:/Users/fabia/AppData/Roaming/npm/node_modules/newman/bin'
-     bat 'node newman run C:\\Users\\fabia\\Desktop\\pruebas_postman\\collection_test.json --insecure'
- }
+
 	
   stage('Report Email') {
       emailext body: 'Se terminó de desplegar', subject: 'Test - Se termino de desplegar', to: 'grovveip@gmail.com'
