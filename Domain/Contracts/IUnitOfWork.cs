@@ -20,6 +20,7 @@ namespace Domain.Contracts
 
         IValorationRepository ValorationRepository { get; }
 
+        IAnnouncementRepository AnnouncementRepository { get; }
 
         int Commit();
     }

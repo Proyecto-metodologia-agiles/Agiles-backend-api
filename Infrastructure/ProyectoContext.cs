@@ -23,12 +23,13 @@ namespace Infrastructure
 
         public DbSet<Valoracion> Valoration { get; set; }
 
+        public DbSet<Announcement> Announcement { get; set; }
+
         public ProyectoContext()
         {
         }
 
 
-        
         public ProyectoContext(DbContextOptions options) : base(options)
         {
 
