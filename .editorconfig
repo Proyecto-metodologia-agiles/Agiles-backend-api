@@ -1,0 +1,10 @@
+﻿[*.cs]
+
+# CS0618: El tipo o el miembro están obsoletos
+dotnet_diagnostic.CS0618.severity = none
+
+# CS8622: La nulabilidad de los tipos de referencia del tipo de parámetro no coincide con el delegado de destino
+dotnet_diagnostic.CS8622.severity = silent
+
+# CS8604: Posible argumento de referencia nulo
+dotnet_diagnostic.CS8604.severity = none
