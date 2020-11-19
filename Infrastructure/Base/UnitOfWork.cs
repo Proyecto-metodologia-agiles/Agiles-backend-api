@@ -113,7 +113,21 @@ namespace Infrastructure.Base
             }
         }
 
+        public IAnnouncementRepository _announcementRepository;
+       
+        public IAnnouncementRepository AnnouncementRepository 
+        {
+            get
+            {
+                if (_announcementRepository == null)
+                {
+                    _announcementRepository = new AnnouncementRepository(_dbContext);
+                }
+                return _announcementRepository;
+            }
+        }
 
+       
         public int Commit()
         {
             return _dbContext.SaveChanges();
