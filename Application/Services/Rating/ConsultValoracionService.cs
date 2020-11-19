@@ -17,7 +17,7 @@ namespace Application.Services.Rating
 
         public List<Valoracion> GetId(int id) 
         {
-            var val = _unitOfWork.ValorationRepository.FindBy(includeProperties: "Valoration,Date");
+            var val = _unitOfWork.ValorationRepository.FindBy(t => t.Project.Id == id ,includeProperties: "Project");
             _unitOfWork.Dispose();
             List<Valoracion> valoraciones = new List<Valoracion>();
             foreach (var itemlist in val.ToList())
