@@ -3,6 +3,7 @@ using Domain.Contracts;
 using Domain.Entities;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 
 namespace WebApi.Controllers
@@ -13,11 +14,13 @@ namespace WebApi.Controllers
     {
         readonly ProyectoContext _context;
         readonly IUnitOfWork _unitOfWork;
+        private readonly AppSettings _appSettings;
 
-        public AdvisoryController(ProyectoContext context, IUnitOfWork unitOfWork)
+        public AdvisoryController(IOptions<AppSettings> appSettings, ProyectoContext context, IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _context = context;
+            _appSettings = appSettings.Value;
         }
 
         [HttpPost("[action]")]
