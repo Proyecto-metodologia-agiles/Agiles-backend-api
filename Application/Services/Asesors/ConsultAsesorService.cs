@@ -31,7 +31,7 @@ namespace Application.Services.Studens
             List<Asesor> metodologicos = new List<Asesor>();
             foreach (var itemlist in res.ToList())
             {
-                if (itemlist.Type_Asser.Equals("Metodologico"))
+                if (itemlist.Type_Asser.Equals("Metodológico"))
                 {
                     metodologicos.Add(itemlist);
                 }
@@ -46,7 +46,7 @@ namespace Application.Services.Studens
             List<Asesor> tematicos = new List<Asesor>();
             foreach (var itemlist in res.ToList())
             {
-                if (itemlist.Type_Asser.Equals("Tematico"))
+                if (itemlist.Type_Asser.Equals("Temático"))
                 {
                     tematicos.Add(itemlist);
                 }
