@@ -15,19 +15,23 @@ namespace Application.Services.Rating
             _unitOfWork = unitOfWork;
         }
 
-        public List<Valoracion> GetId(int id) 
+        public List<Valoracion> GetId(string id) 
         {
-            var val = _unitOfWork.ValorationRepository.FindBy(t => t.Project.Id == id ,includeProperties: "Project");
+            var val = _unitOfWork.ValorationRepository.FindBy(t => t.Project.Student_1.Cedula == id || t.Project.Student_2.Cedula == id ,includeProperties: "Project");
             _unitOfWork.Dispose();
             List<Valoracion> valoraciones = new List<Valoracion>();
             foreach (var itemlist in val.ToList())
-            {
-                if (itemlist.ProjectId == id)
-                {
-                    valoraciones.Add(itemlist);
-                }
+            {          
+                    valoraciones.Add(itemlist);   
             }
             return valoraciones;
+        }
+
+        public List<Valoracion> GetAll()
+        {
+            var val = _unitOfWork.ValorationRepository.FindBy(includeProperties: "Project");
+            _unitOfWork.Dispose();
+            return val.ToList();
         }
     }
 }
