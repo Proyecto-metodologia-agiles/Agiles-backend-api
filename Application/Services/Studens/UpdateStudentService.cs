@@ -31,6 +31,7 @@ namespace Application.Services.Studens
                 {
                     estudiante.Password = request.Password;
                     estudiante_response.Mensaje = "La clave del estudiante fue actualizada";
+                    _unitOfWork.Commit();
                     return estudiante_response;
                 }
                 else 

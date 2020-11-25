@@ -45,7 +45,16 @@ namespace WebApi.Controllers
             consultStudentService servicio = new consultStudentService(_unitOfWork);
             List<Estudiante> Lista = servicio.GetEstate0();
             return Lista;
-
         }
+
+
+        [HttpPut("[action]")]
+        public UpdateEstudianteResponse UpdatePassword(UpdateEstudianteRequest request)
+        {
+            UpdateStudentService servicio = new UpdateStudentService(_unitOfWork);
+            UpdateEstudianteResponse respuesta = servicio.UpdatePassword(request);
+            return respuesta;
+        }
+
     }
 }

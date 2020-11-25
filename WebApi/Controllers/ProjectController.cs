@@ -55,31 +55,20 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("[action]")]
-        public ActionResult<IEnumerable<Evaluacion>> Evaluaciones(int id)
+        public ActionResult<IEnumerable<Evaluacion>> EvaluationsStudent(string identification)
         {
             ConsultEvaluationService servicio_evaluation = new ConsultEvaluationService(_unitOfWork);
-            List<Evaluacion> Lista = servicio_evaluation.GetId(id);
-            Lista.ForEach(x =>
-            {
-                x.Url_Archive = Request.Host + "/" + x.Url_Archive;
-            });
-
+            List<Evaluacion> Lista = servicio_evaluation.GetId(identification);
             return Ok(Lista);
 
         }
 
         [HttpGet("[action]")]
-        public ActionResult<IEnumerable<Valoracion>> Valoraciones(int id)
+        public ActionResult<IEnumerable<Valoracion>> ValorationsStudent(string identification)
         {
             ConsultValoracionService servicio_valoration = new ConsultValoracionService(_unitOfWork);
-            List<Valoracion> Lista = servicio_valoration.GetId(id);
-            Lista.ForEach(x =>
-            {
-                x.Url_Archive = Request.Host + "/" + x.Url_Archive;
-            });
-
+            List<Valoracion> Lista = servicio_valoration.GetId(identification);
             return Ok(Lista);
-
         }
 
 
