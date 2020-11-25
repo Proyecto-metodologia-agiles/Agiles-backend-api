@@ -25,8 +25,7 @@ namespace Application.Services.Rating
             {
                 Valoracion valoracion1 = new Valoracion()
                 {
-                    Date = valoracion.Date,
-                    //Id = evaluacion.Id,
+                    Date = DateTime.Today,
                     Observation = valoracion.Observation,
                     ProjectId = valoracion.ProjectId,
                     Project = _unitOfWork.ProyectoRepository.Find(valoracion.ProjectId),

@@ -47,7 +47,7 @@ namespace WebApi.Controllers
                 {
                     new MailerFrom
                     {
-                        Email = "carloscastilla31@gmail.com",
+                        Email = "fandresquintero@unicesar.edu.co",
                         Name = "carlos castilla"
                     }
                 },
