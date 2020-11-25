@@ -54,6 +54,34 @@ namespace WebApi.Controllers
 
         }
 
+        [HttpGet("[action]")]
+        public ActionResult<IEnumerable<Evaluacion>> Evaluaciones(int id)
+        {
+            ConsultEvaluationService servicio_evaluation = new ConsultEvaluationService(_unitOfWork);
+            List<Evaluacion> Lista = servicio_evaluation.GetId(id);
+            Lista.ForEach(x =>
+            {
+                x.Url_Archive = Request.Host + "/" + x.Url_Archive;
+            });
+
+            return Ok(Lista);
+
+        }
+
+        [HttpGet("[action]")]
+        public ActionResult<IEnumerable<Valoracion>> Valoraciones(int id)
+        {
+            ConsultValoracionService servicio_valoration = new ConsultValoracionService(_unitOfWork);
+            List<Valoracion> Lista = servicio_valoration.GetId(id);
+            Lista.ForEach(x =>
+            {
+                x.Url_Archive = Request.Host + "/" + x.Url_Archive;
+            });
+
+            return Ok(Lista);
+
+        }
+
 
         [HttpPut("[action]")]
         public ActionResult<CrearProyectoResponse> Pust([FromForm] UpdateProjectServiceRequest request)
