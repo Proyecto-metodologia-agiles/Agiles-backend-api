@@ -44,28 +44,28 @@ namespace Application.Mailers
                 case 2:
                     {
                         //CreateEvaluationService
-                         contenido = "Cordial saludo  " + plantillas.NombreCompleto + "," + "<br><br>"
+                         contenido = "<html>Cordial saludo  " + plantillas.NombreCompleto + "," + "<br><br>"
                         + " Se le informa que su proyecto con titulo:" + "<br><br>"
                         + " Proyecto:  " + plantillas.TituloProyecto + " " + "<br><br>"
                         + " Ha sido evaluado por el comite, por favor revise el estado de su proyecto<br><br> " 
                         + " De antemano agradecemos la confianza depositada en nosotros" + "<br><br>"
                         + " Atentamente:" + "<br>" + "<br>"
                         + " Universidad Popular del Cesar." + "<br>"
-                        + " Correo: 1234@unicesar.edu.co - Celular (Whatsapp): 3042065930" + "<br><br>";
+                        + " Correo: 1234@unicesar.edu.co - Celular (Whatsapp): 3042065930" + "<br><br></html>";
                         break;
 
                     }
                 case 3:
                     {
                         //3. CreateValoracionService
-                        contenido = "Cordial saludo  " + plantillas.NombreCompleto + "," + "<br><br>"
+                        contenido = "<html>Cordial saludo  " + plantillas.NombreCompleto + "," + "<br><br>"
                         + " Se le informa que su proyecto con titulo:" + "<br><br>"
                         + " Proyecto:  " + plantillas.TituloProyecto + " " + "<br><br>"
                         + " Ha sido valorado y se le han hecho algunas obervaciones, por favor revise las observaciones realizadas  a su proyecto y corrija el documento< br >< br > " 
                         + " De antemano agradecemos la confianza depositada en nosotros+" + "<br><br>"
                         + " Atentamente:" + "<br>" + "<br>"
                         + " Universidad Popular del Cesar." + "<br>"
-                        + " Correo: 1234@unicesar.edu.co - Celular (Whatsapp): 3042065930" + "<br><br>";
+                        + " Correo: 1234@unicesar.edu.co - Celular (Whatsapp): 3042065930" + "<br><br></html>";
                         break;
                     }
             }
