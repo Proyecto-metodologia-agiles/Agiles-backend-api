@@ -25,7 +25,7 @@ namespace Infrastructure.Mailers.Events
         public static bool Send(ObjectMailer mailer)
         {
             return new Mailer()
-                    .SetFrom(mailer.Smtp)
+                    .SetFrom()
                     .SeTo(mailer.MailerFroms)
                     .SetSubject(mailer.Subject)
                     .GetHtml(mailer.Templante, mailer.StrReplacesTemplante)
@@ -33,12 +33,13 @@ namespace Infrastructure.Mailers.Events
                     .SetFile(mailer.FilesPath)
                     .SetTextBody(mailer.TextBody)
                     .CreateBody()
-                    .Authenticate(mailer.Smtp)
+                    .Authenticate()
                     .Send()
                     .SendState();
         }
 
 
+        
         
 
     }

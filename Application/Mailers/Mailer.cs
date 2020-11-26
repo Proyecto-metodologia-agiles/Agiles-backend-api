@@ -23,21 +23,37 @@ namespace Infrastructure.Mailers
         private readonly MimeMessage _message;
         private string _response;
         private bool _state = false;
-      
+        private SMTP smtp;
+
+
 
         public Mailer()
         {
             _bodyBuilder = new BodyBuilder();
             _client = new SmtpClient();
             _message = new MimeMessage();
-            
+
+             smtp = new SMTP
+            {
+
+                Name = Helper._appSettings.Mailer.SmtName,
+                Host = Helper._appSettings.Mailer.SmtpServer,
+                UserName = Helper._appSettings.Mailer.SmtpUser,
+                Password = Helper._appSettings.Mailer.SmtpPass,
+                Port = Helper._appSettings.Mailer.SmtpPort,
+                Ssl = Helper._appSettings.Mailer.EnableSsl
+            };
+
         }
 
        
 
-        public Mailer SetFrom(SMTP mailer)
+        public Mailer SetFrom()
         {
-            _message.From.Add(new MailboxAddress(mailer.Name, mailer.UserName));
+
+            
+
+            _message.From.Add(new MailboxAddress(smtp.Name, smtp.UserName));
             return this;
         }
 
@@ -71,24 +87,14 @@ namespace Infrastructure.Mailers
         public Mailer GetHtml(string? pathToFile = null, Dictionary<string, string>? strReplace = null)
         {
 
-            if(pathToFile != null  && pathToFile != String.Empty)
+            _bodyBuilder.HtmlBody = pathToFile;
+            if (strReplace != null)
             {
-                using (StreamReader SourceReader = System.IO.File.OpenText(pathToFile))
+                strReplace.ForEach(x =>
                 {
-                    _bodyBuilder.HtmlBody = SourceReader.ReadToEnd();
+                    _bodyBuilder.HtmlBody = _bodyBuilder.HtmlBody.Replace(x.Key, x.Value);
+                });
 
-
-
-                    if (strReplace != null)
-                    {
-                        strReplace.ForEach(x =>
-                        {
-                            _bodyBuilder.HtmlBody = _bodyBuilder.HtmlBody.Replace(x.Key, x.Value);
-                        });
-
-                    }
-
-                }
             }
 
             return this;
@@ -130,11 +136,11 @@ namespace Infrastructure.Mailers
             return this;
         }
 
-        public Mailer Authenticate(SMTP mailer)
+        public Mailer Authenticate()
         {
            
-            _client.Connect(mailer.Host, mailer.Port, mailer.Ssl);
-            _client.Authenticate(mailer.UserName, mailer.Password);
+            _client.Connect(smtp.Host, smtp.Port, smtp.Ssl);
+            _client.Authenticate(smtp.UserName, smtp.Password);
             return this;
         }
 
@@ -146,8 +152,8 @@ namespace Infrastructure.Mailers
                     | SslProtocols.Ssl3
                     | SslProtocols.Tls
                     | SslProtocols.Tls11
-                    | SslProtocols.Tls12
-                    | SslProtocols.Tls13;
+                    | SslProtocols.Tls12;
+                    //| SslProtocols.Tls13;
                 _client.ServerCertificateValidationCallback = (s, c, h, e) => true;
                 _client.Send(_message);
                 _client.Disconnect(true);

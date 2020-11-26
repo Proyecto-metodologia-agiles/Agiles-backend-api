@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using System.IO;
 
 namespace WebApi
 {
@@ -29,7 +30,13 @@ namespace WebApi
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
+            Helper._appSettings = Configuration.GetSection("AppSettings").Get<AppSettings>();
+
+            
+
             var connectionString = Configuration.GetConnectionString("ProyectoContext");
+
+
 
             #region Inyeccion de Manejo de Base de datos
             services.AddDbContext<ProyectoContext>
