@@ -9,7 +9,7 @@ namespace Application.Requests.Rating
     {
         [MaxLength(1000)]
         public string Observation { get; set; }
-        public DateTime Date { get; set; }
+   
         [MaxLength(1000)]
         public string Valoration { get; set; }
        

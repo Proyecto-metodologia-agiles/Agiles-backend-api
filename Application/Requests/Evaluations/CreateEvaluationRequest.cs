@@ -11,8 +11,6 @@ namespace Application.Requests.Evaluations
         public string Observation { get; set; }
         [Required]
         public int ProjectId { get; set; }
-        public DateTime Date { get; set; }
-
-        //public int Id { set; get; }
+      
     }
 }

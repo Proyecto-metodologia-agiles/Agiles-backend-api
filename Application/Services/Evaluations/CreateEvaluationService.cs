@@ -30,7 +30,7 @@ namespace Application.Services.Evaluations
             {
                 Evaluacion evaluacion1 = new Evaluacion()
                 {
-                    Date = evaluacion.Date,
+                    Date = DateTime.Today,
                     //Id = evaluacion.Id,
                     Observation = evaluacion.Observation,
                     ProjectId = evaluacion.ProjectId,

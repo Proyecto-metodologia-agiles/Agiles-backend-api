@@ -54,6 +54,23 @@ namespace WebApi.Controllers
 
         }
 
+        [HttpGet("[action]")]
+        public ActionResult<IEnumerable<Evaluacion>> EvaluationsStudent(string identification)
+        {
+            ConsultEvaluationService servicio_evaluation = new ConsultEvaluationService(_unitOfWork);
+            List<Evaluacion> Lista = servicio_evaluation.GetId(identification);
+            return Ok(Lista);
+
+        }
+
+        [HttpGet("[action]")]
+        public ActionResult<IEnumerable<Valoracion>> ValorationsStudent(string identification)
+        {
+            ConsultValoracionService servicio_valoration = new ConsultValoracionService(_unitOfWork);
+            List<Valoracion> Lista = servicio_valoration.GetId(identification);
+            return Ok(Lista);
+        }
+
 
         [HttpPut("[action]")]
         public ActionResult<CrearProyectoResponse> Pust([FromForm] UpdateProjectServiceRequest request)
@@ -64,7 +81,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("[action]")]
-        public ActionResult<CreateEvaluacionResponse> CreateEvaluation([FromBody] CreateEvaluacionRequest request)
+        public ActionResult<CreateEvaluacionResponse> CreateEvaluation(CreateEvaluacionRequest request)
         {
             CreateEvaluationService _service = new CreateEvaluationService(_unitOfWork);
             CreateEvaluacionResponse response = _service.Create(request);
@@ -73,7 +90,7 @@ namespace WebApi.Controllers
 
 
         [HttpPost("[action]")]
-        public ActionResult<CreateValoracionResponse> CreateValoracion([FromBody] CreateValoracionRequest request)
+        public ActionResult<CreateValoracionResponse> CreateValoracion(CreateValoracionRequest request)
         {
             CreateValoracionService _service = new CreateValoracionService(_unitOfWork);
             CreateValoracionResponse response = _service.Create(request);
