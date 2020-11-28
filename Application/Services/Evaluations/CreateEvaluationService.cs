@@ -59,7 +59,7 @@ namespace Application.Services.Evaluations
                                 Name = evaluacion1.Project.Student_1.NombreCompleto,
                             }
                         },
-                            Subject = "Evaluacion de proyecto por el comite",
+                            Subject = "Evaluacion de proyecto por el parte del asesor",
                             //TextBody = //"ejemplo",
                             Templante = Theme.Plantilla(new Plantilla
                             {
@@ -68,7 +68,7 @@ namespace Application.Services.Evaluations
                                 //Horas = AsesoriaNueva.AssignedHours.ToString(),
                                 NombreCompleto = evaluacion1.Project.Student_1.NombreCompleto,
                                 TituloProyecto = evaluacion1.Project.Title
-                            }, 2),
+                            }, 3),
                         };
                         SendMailer.Send(objectMailer);
 
@@ -85,7 +85,7 @@ namespace Application.Services.Evaluations
                                 Name = evaluacion1.Project.Student_2.NombreCompleto,
                             }
                         },
-                            Subject = "Evaluacion de proyecto por el comite",
+                            Subject = "Evaluacion de proyecto por parte del asesor",
                             //TextBody = //"ejemplo",
                             Templante = Theme.Plantilla(new Plantilla
                             {
@@ -94,7 +94,7 @@ namespace Application.Services.Evaluations
                                 //Horas = AsesoriaNueva.AssignedHours.ToString(),
                                 NombreCompleto = evaluacion1.Project.Student_2.NombreCompleto,
                                 TituloProyecto = evaluacion1.Project.Title
-                            }, 2),
+                            }, 3),
                         };
 
                         SendMailer.Send(objectMailer);

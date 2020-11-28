@@ -51,7 +51,7 @@ namespace Application.Services.Rating
                                 Name = valoracion1.Project.Student_1.NombreCompleto,
                             }
                         },
-                        Subject = "Valoracion de proyecto por parte de asesor",
+                        Subject = "Valoracion de proyecto por parte de comite",
                         //TextBody = //"ejemplo",
                         Templante = Theme.Plantilla(new Plantilla
                         {
@@ -77,7 +77,7 @@ namespace Application.Services.Rating
                                 Name = valoracion1.Project.Student_2.NombreCompleto,
                             }
                         },
-                        Subject = "Valoracion de proyecto por parte de asesor",
+                        Subject = "Valoracion de proyecto por parte de comite",
                         //TextBody = //"ejemplo",
                         Templante = Theme.Plantilla(new Plantilla
                         {
