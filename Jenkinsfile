@@ -5,7 +5,7 @@ node {
   }
   
   stage ('Restore Nuget') {
-    bat "dotnet restore Agil.sln"
+    bat 'dotnet restore Agil.sln'
   }
   
   stage('Clean') {
