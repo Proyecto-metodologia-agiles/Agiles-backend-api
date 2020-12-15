@@ -40,7 +40,7 @@ namespace WebApi
 
             #region Inyeccion de Manejo de Base de datos
             services.AddDbContext<ProyectoContext>
-                (opt => opt.UseSqlServer(connectionString));
+                (opt => opt.UseNpgsql(connectionString));
             #endregion
 
             ///Inyección de dependencia Especifica
